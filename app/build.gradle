@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt' // Add kapt plugin for compiling data binding in kotlin
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "code.rifatsdev.rifbase"
+        applicationId "io.code.rifatsdev.rifbase"
         minSdkVersion 17    // Does not support RTL (Right to left; i.e. Arabic), if (min SDK < 17)
         targetSdkVersion 28
 
@@ -24,9 +25,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    /*
+    * Enable Android data binding library
+    * */
+    dataBinding{
+        enabled true
+    }
 }
 
 dependencies {
+
+    /*
+    * Android data binding library compiler for Kotlin
+    * */
+    kapt "com.android.databinding:compiler:$gradle_version"
+
     /*
      * Add .jar libraries from external folder
      * */

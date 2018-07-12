@@ -1,4 +1,4 @@
-package code.rifatsdev.rifbase
+package io.code.rifatsdev.rifbase
 
 import android.content.Context
 import android.support.multidex.MultiDexApplication
