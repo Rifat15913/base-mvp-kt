@@ -25,6 +25,13 @@ allprojects {
     }
 }
 
+ext{
+    target_sdk_version = 28
+    // Does not support RTL (Right to left; i.e. Arabic), if (min SDK < 17)
+    minimum_sdk_version = 17
+    support_library_version = '28.0.0-alpha3'
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
