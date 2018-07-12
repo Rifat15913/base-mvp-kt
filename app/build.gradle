@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt' // Add kapt plugin for compiling data binding in kotlin
+
+// Add kapt plugin for compiling data binding in kotlin
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -26,9 +28,7 @@ android {
         }
     }
 
-    /*
-    * Enable Android data binding library
-    * */
+    // Enable Android data binding library
     dataBinding{
         enabled true
     }
@@ -60,6 +60,16 @@ dependencies {
      * */
     implementation 'com.android.support:appcompat-v7:28.0.0-alpha3' // Appcompat
     implementation 'com.android.support.constraint:constraint-layout:1.1.2' // Constraint layout
+
+    /*
+    * Circular ImageView
+    * */
+    implementation 'com.mikhaellopez:circularimageview:3.1.0'
+
+    /*
+    * Timber (Replacement of Log)
+    * */
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     /*
      * Testing

@@ -8,10 +8,10 @@ import io.diaryofrifat.code.rifbase.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var mBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
-        binding.textViewDemo.text = "New Text"
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
 }
