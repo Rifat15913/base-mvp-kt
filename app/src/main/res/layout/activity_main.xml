@@ -6,7 +6,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="io.code.rifatsdev.rifbase.ui.main.MainActivity">
+        tools:context="io.diaryofrifat.code.rifbase.ui.main.MainActivity">
 
         <TextView
             android:id="@+id/text_view_demo"

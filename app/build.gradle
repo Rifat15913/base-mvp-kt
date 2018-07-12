@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt' // Add kapt plugin for compiling data binding in kot
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "io.code.rifatsdev.rifbase"
+        applicationId "io.diaryofrifat.code.rifbase"
         minSdkVersion 17    // Does not support RTL (Right to left; i.e. Arabic), if (min SDK < 17)
         targetSdkVersion 28
 
@@ -35,7 +35,6 @@ android {
 }
 
 dependencies {
-
     /*
     * Android data binding library compiler for Kotlin
     * */
