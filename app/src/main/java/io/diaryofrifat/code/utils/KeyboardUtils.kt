@@ -9,7 +9,12 @@ import android.widget.EditText
 class KeyboardUtils private constructor() {
 
     companion object {
-        fun hideSoftInput(activity: Activity) {
+        /**
+         * This method hides the keyboard if it was being shown
+         *
+         * @param activity current activity
+         * */
+        fun hideKeyboard(activity: Activity) {
             var view = activity.currentFocus
             if (view == null) view = View(activity)
             val imm =
@@ -17,16 +22,27 @@ class KeyboardUtils private constructor() {
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
 
-        fun showSoftInput(edit: EditText, context: Context) {
-            edit.isFocusable = true
-            edit.isFocusableInTouchMode = true
-            edit.requestFocus()
-            val imm = context
-                    .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(edit, 0)
+        /**
+         * This method shows soft keyboard
+         *
+         * @param editText the text field where we want to provide our input
+         * @param context current context
+         * */
+        fun showKeyboard(editText: EditText, context: Context) {
+            editText.isFocusable = true
+            editText.isFocusableInTouchMode = true
+            editText.requestFocus()
+            val imm =
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(editText, 0)
         }
 
-        fun toggleSoftInput(context: Context) {
+        /**
+         * This method toggles soft keyboard
+         *
+         * @param context current context
+         * */
+        fun toggleKeyboard(context: Context) {
             val imm = context
                     .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)

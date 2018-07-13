@@ -604,10 +604,22 @@ class FileUtils private constructor() {
             sMimeTypes["zip"] = "application/zip"
         }
 
+        /**
+         * This method fetches the type of a file
+         *
+         * @param fileName name of the file
+         * @return the file type
+         * */
         fun getFileType(fileName: String): String {
             return fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)
         }
 
+        /**
+         * This method returns the mime type of a file
+         *
+         * @param fileType type of the file
+         * @return file mime type
+         * */
         fun getFileMimeType(fileType: String): String? {
             if (sMimeTypes.size == 0) init()
             return sMimeTypes[fileType]
