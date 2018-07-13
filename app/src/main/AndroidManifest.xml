@@ -3,7 +3,7 @@
     package="io.diaryofrifat.code.rifbase">
 
     <application
-        android:name="io.diaryofrifat.code.rifbase.RifBaseApplication"
+        android:name="io.diaryofrifat.code.RifBaseApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

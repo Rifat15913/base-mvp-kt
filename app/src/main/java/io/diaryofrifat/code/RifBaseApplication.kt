@@ -1,24 +1,30 @@
-package io.diaryofrifat.code.rifbase
+package io.diaryofrifat.code
 
 import android.content.Context
 import android.support.multidex.MultiDexApplication
+import io.diaryofrifat.code.rifbase.BuildConfig
 import timber.log.Timber
 
 class RifBaseApplication : MultiDexApplication() {
 
-    private var sContext: Context? = null
+    init {
+        sInstance = this
+    }
 
-    fun getBaseApplicationContext(): Context? {
-        return sContext
+    companion object {
+        private lateinit var sInstance: RifBaseApplication
+
+        fun getBaseApplicationContext(): Context {
+            return sInstance.applicationContext
+        }
     }
 
     override fun onCreate() {
         super.onCreate()
-        sContext = applicationContext
 
-        initiate(sContext!!)
+        initiate(applicationContext)
         if (BuildConfig.DEBUG) {
-            initiateOnlyInDebugMode(sContext!!)
+            initiateOnlyInDebugMode(applicationContext)
         }
     }
 
