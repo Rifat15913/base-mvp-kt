@@ -1,9 +1,14 @@
 package io.diaryofrifat.code.utils
 
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
+import android.view.View
 import io.diaryofrifat.code.RifBaseApplication
+import io.diaryofrifat.code.rifbase.R
+import io.reactivex.Observable
 
 
 class ViewUtils {
@@ -54,6 +59,41 @@ class ViewUtils {
         fun dpToPx(dp: Int): Float {
             val density = Resources.getSystem().displayMetrics.density
             return Math.round(dp * density).toFloat()
+        }
+
+        /**
+         * This method returns bitmap from the view
+         *
+         * @param view desired view
+         * @return bitmap of the view
+         * */
+        fun getBitmapFromView(view: View): Bitmap? {
+            val bitmap =
+                    Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+            view.draw(Canvas(bitmap))
+
+            return bitmap
+        }
+
+        /**
+         * This method returns Observable<Bitmap> of the view
+         *
+         * @param view desired view
+         * @return observable of the bitmap of the view
+         * */
+        fun getObservableBitmapFromView(view: View): Observable<Bitmap> {
+            return Observable.defer {
+                val bitmap = getBitmapFromView(view)
+
+                if (bitmap == null) {
+                    Observable.error(
+                            Throwable(RifBaseApplication.getBaseApplicationContext()
+                                    .getString(R.string.error_could_not_create_bitmap))
+                    )
+                } else {
+                    Observable.just(bitmap)
+                }
+            }
         }
     }
 }
