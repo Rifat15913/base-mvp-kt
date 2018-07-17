@@ -8,6 +8,12 @@ import io.diaryofrifat.code.RifBaseApplication
 class Toaster private constructor() {
 
     companion object {
+        /**
+         * This method creates and shows a toast for long period
+         *
+         * @param text the text to be shown
+         * @return void
+         * */
         fun showLong(text: String) {
             if (!TextUtils.isEmpty(text)) {
                 Toast.makeText(RifBaseApplication.getBaseApplicationContext(),
@@ -15,6 +21,12 @@ class Toaster private constructor() {
             }
         }
 
+        /**
+         * This method creates and shows a toast for short period
+         *
+         * @param text the text to be shown
+         * @return void
+         * */
         fun showShort(text: String) {
             if (!TextUtils.isEmpty(text)) {
                 Toast.makeText(RifBaseApplication.getBaseApplicationContext(),
