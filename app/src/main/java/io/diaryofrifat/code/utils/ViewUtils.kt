@@ -1,5 +1,6 @@
 package io.diaryofrifat.code.utils
 
+import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import io.diaryofrifat.code.RifBaseApplication
@@ -31,6 +32,28 @@ class ViewUtils {
                     RifBaseApplication.getBaseApplicationContext(),
                     colorResourceId
             )
+        }
+
+        /**
+         * This method converts pixels to dp
+         *
+         * @param px desired pixels
+         * @return amount in dp
+         * */
+        fun pxToDp(px: Float): Float {
+            val densityDpi = Resources.getSystem().displayMetrics.densityDpi.toFloat()
+            return px / (densityDpi / 160f)
+        }
+
+        /**
+         * This method converts dp to pixels
+         *
+         * @param dp desired amount of dp
+         * @return amount in pixels
+         * */
+        fun dpToPx(dp: Int): Float {
+            val density = Resources.getSystem().displayMetrics.density
+            return Math.round(dp * density).toFloat()
         }
     }
 }
