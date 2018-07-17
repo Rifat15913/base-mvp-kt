@@ -3,6 +3,7 @@ package io.diaryofrifat.code
 import android.content.Context
 import android.support.multidex.MultiDexApplication
 import io.diaryofrifat.code.rifbase.BuildConfig
+import io.diaryofrifat.code.utils.Toaster
 import timber.log.Timber
 
 class RifBaseApplication : MultiDexApplication() {
@@ -38,6 +39,6 @@ class RifBaseApplication : MultiDexApplication() {
     }
 
     private fun initiate(context: Context) {
-
+        Toaster.init()
     }
 }
