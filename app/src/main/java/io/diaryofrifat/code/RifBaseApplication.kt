@@ -3,7 +3,7 @@ package io.diaryofrifat.code
 import android.content.Context
 import android.support.multidex.MultiDexApplication
 import io.diaryofrifat.code.rifbase.BuildConfig
-import io.diaryofrifat.code.utils.Toaster
+import io.diaryofrifat.code.utils.libs.ToastUtils
 import timber.log.Timber
 
 class RifBaseApplication : MultiDexApplication() {
@@ -23,13 +23,13 @@ class RifBaseApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        initiate(applicationContext)
+        initiate()
         if (BuildConfig.DEBUG) {
-            initiateOnlyInDebugMode(applicationContext)
+            initiateOnlyInDebugMode()
         }
     }
 
-    private fun initiateOnlyInDebugMode(context: Context) {
+    private fun initiateOnlyInDebugMode() {
         Timber.plant(object : Timber.DebugTree() {
             override fun createStackElementTag(element: StackTraceElement): String? {
                 return super.createStackElementTag(element) +
@@ -38,7 +38,7 @@ class RifBaseApplication : MultiDexApplication() {
         })
     }
 
-    private fun initiate(context: Context) {
-        Toaster.init()
+    private fun initiate() {
+        ToastUtils.init()
     }
 }

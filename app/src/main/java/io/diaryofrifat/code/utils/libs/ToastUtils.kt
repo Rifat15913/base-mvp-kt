@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.utils
+package io.diaryofrifat.code.utils.libs
 
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
@@ -6,11 +6,11 @@ import android.widget.Toast
 import es.dmoral.toasty.Toasty
 import io.diaryofrifat.code.RifBaseApplication
 
-class Toaster private constructor() {
+class ToastUtils private constructor() {
 
     companion object {
         /**
-         * This method initializes Toaster along with Toasty
+         * This method initializes ToastUtils along with Toasty
          * */
         fun init() {
             Toasty.Config

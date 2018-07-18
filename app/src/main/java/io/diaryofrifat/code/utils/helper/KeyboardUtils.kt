@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.utils
+package io.diaryofrifat.code.utils.helper
 
 import android.app.Activity
 import android.content.Context
