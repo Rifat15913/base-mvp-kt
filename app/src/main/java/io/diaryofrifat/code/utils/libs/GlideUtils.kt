@@ -1,5 +1,6 @@
 package io.diaryofrifat.code.utils.libs
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -7,6 +8,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import io.diaryofrifat.code.RifBaseApplication
+import java.util.concurrent.ExecutionException
 
 // TODO: Introduce more methods
 class GlideUtils private constructor() {
@@ -102,6 +104,43 @@ class GlideUtils private constructor() {
                     .apply(requestOptions)
                     .listener(requestListener)
                     .into(imageView)
+        }
+
+        /**
+         * This method returns the bitmap of an image from any source
+         *
+         * @param source image Uri, url or drawable
+         * @param width required width
+         * @param height required height
+         * */
+        // TODO: Test this method
+        fun getBitmap(source: Any, width: Int, height: Int): Bitmap? {
+            try {
+                return Glide.with(RifBaseApplication.getBaseApplicationContext())
+                        .asBitmap()
+                        .load(source)
+                        .apply(RequestOptions()
+                                .skipMemoryCache(true)
+                                .diskCacheStrategy(DiskCacheStrategy.NONE))
+                        .submit(width, height)
+                        .get()
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            } catch (e: ExecutionException) {
+                e.printStackTrace()
+            }
+
+            return null
+        }
+
+        /**
+         * This method clears the image caches on the disk
+         *
+         * @param context current activity context
+         * */
+        // TODO: Test this method
+        fun clearCache(context: Context) {
+            Glide.get(context).clearDiskCache()
         }
 
         private fun getRequestOptionsWithCaching(shouldCache: Boolean): RequestOptions {
