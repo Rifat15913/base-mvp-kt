@@ -8,7 +8,8 @@ import com.yalantis.ucrop.UCrop
 import io.diaryofrifat.code.rifbase.R
 import java.io.File
 
-object ImageCropper {
+// TODO: Test this class
+object ImageCropperUtils {
 
     // Constants
     private const val TEMP_CROPPED_IMAGE = "tempCroppedImage.jpg"

@@ -66,6 +66,8 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$rootProject.ext.support_library_version"
     // CardView
     implementation "com.android.support:cardview-v7:$rootProject.ext.support_library_version"
+    // Exif Interface (for image processing; i.e. rotate)
+    implementation "com.android.support:exifinterface:$rootProject.ext.support_library_version"
 
     /*
     * Constraint layout
