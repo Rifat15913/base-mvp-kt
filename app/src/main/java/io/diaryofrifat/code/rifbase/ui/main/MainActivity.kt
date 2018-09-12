@@ -8,6 +8,9 @@ import io.diaryofrifat.code.rifbase.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    /**
+     * Fields
+     * */
     private lateinit var mBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

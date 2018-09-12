@@ -36,9 +36,20 @@ android {
 
 dependencies {
     /*
+     * Kotlin
+     * */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    /*
     * Android data binding library compiler for Kotlin
     * */
     kapt "com.android.databinding:compiler:$gradle_version"
+
+    /*
+    * ButterKnife library for binding views
+    * */
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
 
     /*
      * Add .jar libraries from external folder
@@ -51,9 +62,20 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     /*
-     * Kotlin
-     * */
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    * Lifecycle (Java 8 Support / instead of lifecycle compiler)
+    * */
+    implementation "android.arch.lifecycle:common-java8:1.1.1"
+
+    /*
+    * ViewModel and LiveData
+    * */
+    implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifecycle_version"
+    kapt "android.arch.lifecycle:compiler:$rootProject.ext.lifecycle_version"
+
+    /*
+    * Lifecycle only
+    * */
+    implementation "android.arch.lifecycle:runtime:$rootProject.ext.lifecycle_version"
 
     /*
      * Android support libraries
