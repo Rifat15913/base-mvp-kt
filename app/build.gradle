@@ -12,7 +12,7 @@ android {
         minSdkVersion rootProject.ext.minimum_sdk_version
         targetSdkVersion rootProject.ext.target_sdk_version
 
-        // Enable Multidex App; so that there will be no limitation (64k+) in method counting
+        // Enable MultiDex App; so that there will be no limitation (64k+) in method counting
         multiDexEnabled true
 
         // Version code and name should be changed for every release
@@ -57,7 +57,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     /*
-     * Multidex
+     * MultiDex
      * */
     implementation 'com.android.support:multidex:1.0.3'
 
@@ -126,15 +126,15 @@ dependencies {
     * RxBinding with Views
     * */
     // Platform bindings
-    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rootProject.ext.rxbinding_version"
     // Support-v4 bindings
-    implementation 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.1.1'
+    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4:$rootProject.ext.rxbinding_version"
     // Appcompat-v7 bindings
-    implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rootProject.ext.rxbinding_version"
     // Design library bindings
-    implementation 'com.jakewharton.rxbinding2:rxbinding-design:2.1.1'
+    implementation "com.jakewharton.rxbinding2:rxbinding-design:$rootProject.ext.rxbinding_version"
     // RecyclerView bindings
-    implementation 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.1.1'
+    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rootProject.ext.rxbinding_version"
 
     /*
     * Timber (Replacement of log)
