@@ -9,7 +9,7 @@ interface ItemClickListener<T> {
      * @param view clicked view
      * @param item model object
      */
-    fun onItemClick(view: View, item: T)
+    fun onItemClick(view: View, item: T) {}
 
     /**
      * This method is called when an item gets clicked.

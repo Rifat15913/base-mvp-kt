@@ -9,7 +9,7 @@ interface ItemLongClickListener<T> {
      * @param view clicked view
      * @param item model object
      */
-    fun onItemLongClick(view: View, item: T)
+    fun onItemLongClick(view: View, item: T) {}
 
     /**
      * This method is called when an item gets long clicked.
