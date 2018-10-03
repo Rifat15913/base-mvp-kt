@@ -4,6 +4,10 @@ import android.graphics.Rect
 import android.support.v7.widget.RecyclerView
 import android.view.View
 
+/**
+ * @see "If this item decoration is added to any [RecyclerView], then we need to remove it at
+ * onStop() of the fragment/activity. Otherwise, the margin gets incremented each time."
+ * */
 class LinearMarginItemDecoration : RecyclerView.ItemDecoration {
 
     /**
