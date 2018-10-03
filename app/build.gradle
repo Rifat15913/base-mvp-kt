@@ -7,6 +7,8 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.target_sdk_version
+    buildToolsVersion rootProject.ext.build_tools_version
+    
     defaultConfig {
         applicationId "io.diaryofrifat.code.rifbase"
         minSdkVersion rootProject.ext.minimum_sdk_version
@@ -31,7 +33,7 @@ android {
     dataBinding {
         enabled true
     }
-    buildToolsVersion '28.0.2'
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
