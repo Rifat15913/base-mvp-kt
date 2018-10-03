@@ -29,6 +29,7 @@ allprojects {
 }
 
 ext{
+    build_tools_version = '28.0.3'
     target_sdk_version = 28
     // Does not support RTL (Right to left; i.e. Arabic), if (min SDK < 17)
     minimum_sdk_version = 17
