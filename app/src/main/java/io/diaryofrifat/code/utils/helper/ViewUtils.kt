@@ -4,13 +4,17 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
+import android.view.WindowManager
 import io.diaryofrifat.code.RifBaseApplication
 import io.diaryofrifat.code.rifbase.R
 import io.diaryofrifat.code.rifbase.ui.base.BaseAdapter
@@ -159,16 +163,16 @@ class ViewUtils {
          * @param swipeItemHandler handler to work with item swipe
          * @param itemAnimator animator for RecyclerView items
          * */
-        fun <T> initializeRecyclerView(recyclerView : RecyclerView,
+        fun <T> initializeRecyclerView(recyclerView: RecyclerView,
                                        adapter: BaseAdapter<T>,
                                        itemClickListener: ItemClickListener<T>?,
                                        itemLongClickListener: ItemLongClickListener<T>?,
                                        layoutManager: RecyclerView.LayoutManager,
                                        itemDecoration: RecyclerView.ItemDecoration?,
                                        swipeItemHandler: SwipeItemHandler?,
-                                       itemAnimator: RecyclerView.ItemAnimator?){
+                                       itemAnimator: RecyclerView.ItemAnimator?) {
 
-            if(itemDecoration != null){
+            if (itemDecoration != null) {
                 recyclerView.addItemDecoration(itemDecoration)
             }
 
@@ -185,8 +189,35 @@ class ViewUtils {
                 adapter.setItemLongClickListener(itemLongClickListener)
             }
 
-            if(swipeItemHandler != null){
+            if (swipeItemHandler != null) {
                 ViewUtils.addSwipeHandler(recyclerView, swipeItemHandler)
+            }
+        }
+
+        /**
+         * This method sets status bar color
+         *
+         * @param activity current activity
+         * @param colorResourceId color resource id
+         * */
+        fun setStatusBarColor(activity: AppCompatActivity, colorResourceId: Int) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && colorResourceId > -1) {
+                val window = activity.window
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = getColor(colorResourceId)
+            }
+        }
+
+        /**
+         * This method sets toolbar color
+         *
+         * @param activity current activity
+         * @param colorResourceId color resource id
+         * */
+        fun setToolbarColor(activity: AppCompatActivity, colorResourceId: Int) {
+            if (colorResourceId > -1) {
+                activity.supportActionBar?.setBackgroundDrawable(
+                        ColorDrawable(getColor(colorResourceId)))
             }
         }
     }

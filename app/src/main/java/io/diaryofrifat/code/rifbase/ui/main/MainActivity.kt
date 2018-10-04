@@ -2,11 +2,26 @@ package io.diaryofrifat.code.rifbase.ui.main
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import io.diaryofrifat.code.rifbase.R
 import io.diaryofrifat.code.rifbase.databinding.ActivityMainBinding
+import io.diaryofrifat.code.rifbase.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
+
+    override val layoutId: Int
+        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+
+    override fun initializePresenter(): MainPresenter {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun startUI() {
+
+    }
+
+    override fun stopUI() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     /**
      * Fields
