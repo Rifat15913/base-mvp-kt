@@ -3,16 +3,55 @@ package io.diaryofrifat.code.utils.helper
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import io.diaryofrifat.code.RifBaseApplication
 import io.diaryofrifat.code.rifbase.R
+import io.diaryofrifat.code.rifbase.ui.base.BaseAdapter
+import io.diaryofrifat.code.rifbase.ui.base.ItemClickListener
+import io.diaryofrifat.code.rifbase.ui.base.ItemLongClickListener
+import io.diaryofrifat.code.rifbase.ui.base.SwipeItemHandler
 import io.reactivex.Observable
 
 
 class ViewUtils {
     companion object {
+        /**
+         * This method returns local resources
+         *
+         * @return desired resources
+         * */
+        fun getResources(): Resources {
+            return RifBaseApplication.getBaseApplicationContext().resources
+        }
+
+        /**
+         * This method returns a local font
+         *
+         * @param resourceId desired resource id
+         * @return desired font
+         * */
+        fun getFont(resourceId: Int): Typeface? {
+            return ResourcesCompat.getFont(RifBaseApplication.getBaseApplicationContext(),
+                    resourceId)
+        }
+
+        /**
+         * This method returns a local string
+         *
+         * @param resourceId desired resource id
+         * @return desired string
+         * */
+        fun getString(resourceId: Int): String {
+            return RifBaseApplication.getBaseApplicationContext().getString(resourceId)
+        }
+
         /**
          * This method returns a local drawable
          *
@@ -22,8 +61,7 @@ class ViewUtils {
         fun getDrawable(resourceId: Int): Drawable? {
             return ContextCompat.getDrawable(
                     RifBaseApplication.getBaseApplicationContext(),
-                    resourceId
-            )
+                    resourceId)
         }
 
         /**
@@ -35,8 +73,7 @@ class ViewUtils {
         fun getColor(colorResourceId: Int): Int {
             return ContextCompat.getColor(
                     RifBaseApplication.getBaseApplicationContext(),
-                    colorResourceId
-            )
+                    colorResourceId)
         }
 
         /**
@@ -93,6 +130,63 @@ class ViewUtils {
                 } else {
                     Observable.just(bitmap)
                 }
+            }
+        }
+
+        /**
+         * This method attaches a swipe handler to the RecyclerView
+         *
+         * @param recyclerView current RecyclerView
+         * @param handler swipe handler
+         * @return [ItemTouchHelper] touch helper of the [RecyclerView]
+         */
+        fun addSwipeHandler(recyclerView: RecyclerView, handler: SwipeItemHandler): ItemTouchHelper {
+            val itemTouchHelper = ItemTouchHelper(handler)
+            itemTouchHelper.attachToRecyclerView(recyclerView)
+
+            return itemTouchHelper
+        }
+
+        /**
+         * This method sets up a RecyclerView
+         *
+         * @param recyclerView current RecyclerView
+         * @param adapter adapter for the view
+         * @param itemClickListener listens to click on items
+         * @param itemLongClickListener listens to long click on items
+         * @param layoutManager linear or grid or other layout manager for the RecyclerView
+         * @param itemDecoration item decoration for margin or separator
+         * @param swipeItemHandler handler to work with item swipe
+         * @param itemAnimator animator for RecyclerView items
+         * */
+        fun <T> initializeRecyclerView(recyclerView : RecyclerView,
+                                       adapter: BaseAdapter<T>,
+                                       itemClickListener: ItemClickListener<T>?,
+                                       itemLongClickListener: ItemLongClickListener<T>?,
+                                       layoutManager: RecyclerView.LayoutManager,
+                                       itemDecoration: RecyclerView.ItemDecoration?,
+                                       swipeItemHandler: SwipeItemHandler?,
+                                       itemAnimator: RecyclerView.ItemAnimator?){
+
+            if(itemDecoration != null){
+                recyclerView.addItemDecoration(itemDecoration)
+            }
+
+            recyclerView.itemAnimator = itemAnimator ?: DefaultItemAnimator()
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = adapter
+            recyclerView.setHasFixedSize(true)
+
+            if (itemClickListener != null) {
+                adapter.setItemClickListener(itemClickListener)
+            }
+
+            if (itemLongClickListener != null) {
+                adapter.setItemLongClickListener(itemLongClickListener)
+            }
+
+            if(swipeItemHandler != null){
+                ViewUtils.addSwipeHandler(recyclerView, swipeItemHandler)
             }
         }
     }

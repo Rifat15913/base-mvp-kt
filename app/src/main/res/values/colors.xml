@@ -3,4 +3,17 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--Extra colors-->
+    <color name="text_regular">#4C646F</color>
+    <color name="text_bold">#404040</color>
+    <color name="text_light">#BCBCBC</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="shadow">#d0d8dc</color>
+    <color name="transparent">#00000000</color>
+    <color name="negative_red">#F5393E</color>
+
 </resources>

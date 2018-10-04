@@ -4,6 +4,21 @@
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="toolbar_extension_height">72dp</dimen>
 
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--Text size dimensions-->
+    <dimen name="text_focus">26sp</dimen>
+    <dimen name="text_headline">24sp</dimen>
+    <dimen name="text_large_title">22sp</dimen>
+    <dimen name="text_title">20sp</dimen>
+    <dimen name="text_large_body">18sp</dimen>
+    <dimen name="text_body">16sp</dimen>
+    <dimen name="text_small_body">14sp</dimen>
+    <dimen name="text_smaller_body">12sp</dimen>
+    <dimen name="text_smallest_body">10sp</dimen>
+
     <dimen name="width_5">5dp</dimen>
     <dimen name="width_10">10dp</dimen>
     <dimen name="width_15">15dp</dimen>

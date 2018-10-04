@@ -132,6 +132,9 @@ dependencies {
     // Timber (Replacement of log)
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
+    // Text drawable
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
     // Testing
     testImplementation 'junit:junit:4.12'
 
