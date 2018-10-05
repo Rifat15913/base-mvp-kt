@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RifBase</string>
+    <string name="app_name">BaseMvp</string>
 
     <!--Error-->
     <string name="error_could_not_create_bitmap">Could not create bitmap from the view</string>

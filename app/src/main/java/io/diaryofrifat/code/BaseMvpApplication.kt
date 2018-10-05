@@ -2,18 +2,18 @@ package io.diaryofrifat.code
 
 import android.content.Context
 import android.support.multidex.MultiDexApplication
-import io.diaryofrifat.code.rifbase.BuildConfig
+import io.diaryofrifat.code.basemvp.BuildConfig
 import io.diaryofrifat.code.utils.libs.ToastUtils
 import timber.log.Timber
 
-class RifBaseApplication : MultiDexApplication() {
+class BaseMvpApplication : MultiDexApplication() {
 
     init {
         sInstance = this
     }
 
     companion object {
-        private lateinit var sInstance: RifBaseApplication
+        private lateinit var sInstance: BaseMvpApplication
 
         fun getBaseApplicationContext(): Context {
             return sInstance.applicationContext

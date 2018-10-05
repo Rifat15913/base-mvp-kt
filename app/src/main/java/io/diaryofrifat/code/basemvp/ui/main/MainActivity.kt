@@ -1,9 +1,9 @@
-package io.diaryofrifat.code.rifbase.ui.main
+package io.diaryofrifat.code.basemvp.ui.main
 
 import android.view.View
-import io.diaryofrifat.code.rifbase.R
-import io.diaryofrifat.code.rifbase.databinding.ActivityMainBinding
-import io.diaryofrifat.code.rifbase.ui.base.BaseActivity
+import io.diaryofrifat.code.basemvp.R
+import io.diaryofrifat.code.basemvp.databinding.ActivityMainBinding
+import io.diaryofrifat.code.basemvp.ui.base.BaseActivity
 import io.diaryofrifat.code.utils.libs.GlideUtils
 
 class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {

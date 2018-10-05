@@ -5,7 +5,7 @@ import android.content.Context
 import android.net.Uri
 import android.support.v4.content.ContextCompat
 import com.yalantis.ucrop.UCrop
-import io.diaryofrifat.code.rifbase.R
+import io.diaryofrifat.code.basemvp.R
 import java.io.File
 
 // TODO: Test this class

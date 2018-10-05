@@ -15,12 +15,12 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import android.view.WindowManager
-import io.diaryofrifat.code.RifBaseApplication
-import io.diaryofrifat.code.rifbase.R
-import io.diaryofrifat.code.rifbase.ui.base.BaseAdapter
-import io.diaryofrifat.code.rifbase.ui.base.ItemClickListener
-import io.diaryofrifat.code.rifbase.ui.base.ItemLongClickListener
-import io.diaryofrifat.code.rifbase.ui.base.SwipeItemHandler
+import io.diaryofrifat.code.BaseMvpApplication
+import io.diaryofrifat.code.basemvp.R
+import io.diaryofrifat.code.basemvp.ui.base.BaseAdapter
+import io.diaryofrifat.code.basemvp.ui.base.ItemClickListener
+import io.diaryofrifat.code.basemvp.ui.base.ItemLongClickListener
+import io.diaryofrifat.code.basemvp.ui.base.SwipeItemHandler
 import io.reactivex.Observable
 
 
@@ -32,7 +32,7 @@ class ViewUtils {
          * @return desired resources
          * */
         fun getResources(): Resources {
-            return RifBaseApplication.getBaseApplicationContext().resources
+            return BaseMvpApplication.getBaseApplicationContext().resources
         }
 
         /**
@@ -42,7 +42,7 @@ class ViewUtils {
          * @return desired font
          * */
         fun getFont(resourceId: Int): Typeface? {
-            return ResourcesCompat.getFont(RifBaseApplication.getBaseApplicationContext(),
+            return ResourcesCompat.getFont(BaseMvpApplication.getBaseApplicationContext(),
                     resourceId)
         }
 
@@ -53,7 +53,7 @@ class ViewUtils {
          * @return desired string
          * */
         fun getString(resourceId: Int): String {
-            return RifBaseApplication.getBaseApplicationContext().getString(resourceId)
+            return BaseMvpApplication.getBaseApplicationContext().getString(resourceId)
         }
 
         /**
@@ -64,7 +64,7 @@ class ViewUtils {
          * */
         fun getDrawable(resourceId: Int): Drawable? {
             return ContextCompat.getDrawable(
-                    RifBaseApplication.getBaseApplicationContext(),
+                    BaseMvpApplication.getBaseApplicationContext(),
                     resourceId)
         }
 
@@ -76,7 +76,7 @@ class ViewUtils {
          * */
         fun getColor(colorResourceId: Int): Int {
             return ContextCompat.getColor(
-                    RifBaseApplication.getBaseApplicationContext(),
+                    BaseMvpApplication.getBaseApplicationContext(),
                     colorResourceId)
         }
 
@@ -128,7 +128,7 @@ class ViewUtils {
 
                 if (bitmap == null) {
                     Observable.error(
-                            Throwable(RifBaseApplication.getBaseApplicationContext()
+                            Throwable(BaseMvpApplication.getBaseApplicationContext()
                                     .getString(R.string.error_could_not_create_bitmap))
                     )
                 } else {

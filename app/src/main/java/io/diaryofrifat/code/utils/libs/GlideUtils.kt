@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
-import io.diaryofrifat.code.RifBaseApplication
+import io.diaryofrifat.code.BaseMvpApplication
 import java.util.concurrent.ExecutionException
 
 // TODO: Introduce more methods
@@ -98,7 +98,7 @@ class GlideUtils private constructor() {
          */
         fun custom(imageView: ImageView, source: Any, requestOptions: RequestOptions,
                    requestListener: RequestListener<Bitmap>?) {
-            Glide.with(RifBaseApplication.getBaseApplicationContext())
+            Glide.with(BaseMvpApplication.getBaseApplicationContext())
                     .asBitmap()
                     .load(source)
                     .apply(requestOptions)
@@ -116,7 +116,7 @@ class GlideUtils private constructor() {
         // TODO: Test this method
         fun getBitmap(source: Any, width: Int, height: Int): Bitmap? {
             try {
-                return Glide.with(RifBaseApplication.getBaseApplicationContext())
+                return Glide.with(BaseMvpApplication.getBaseApplicationContext())
                         .asBitmap()
                         .load(source)
                         .apply(RequestOptions()

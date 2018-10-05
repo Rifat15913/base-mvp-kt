@@ -1,6 +1,6 @@
-package io.diaryofrifat.code.rifbase.ui.main
+package io.diaryofrifat.code.basemvp.ui.main
 
-import io.diaryofrifat.code.rifbase.ui.base.BasePresenter
+import io.diaryofrifat.code.basemvp.ui.base.BasePresenter
 import io.diaryofrifat.code.utils.libs.ToastUtils
 
 class MainPresenter : BasePresenter<MainMvpView>() {

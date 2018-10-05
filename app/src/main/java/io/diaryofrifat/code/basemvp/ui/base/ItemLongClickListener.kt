@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.rifbase.ui.base
+package io.diaryofrifat.code.basemvp.ui.base
 
 import android.view.View
 

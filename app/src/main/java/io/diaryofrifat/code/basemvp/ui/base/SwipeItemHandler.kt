@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.rifbase.ui.base
+package io.diaryofrifat.code.basemvp.ui.base
 
 import android.graphics.Canvas
 import android.graphics.drawable.ColorDrawable
@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import com.amulyakhare.textdrawable.TextDrawable
-import io.diaryofrifat.code.rifbase.R
-import io.diaryofrifat.code.rifbase.ui.base.SwipeItemHandler.BackgroundMaterial.ICON
+import io.diaryofrifat.code.basemvp.R
+import io.diaryofrifat.code.basemvp.ui.base.SwipeItemHandler.BackgroundMaterial.ICON
 import io.diaryofrifat.code.utils.helper.ViewUtils
 
 class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
