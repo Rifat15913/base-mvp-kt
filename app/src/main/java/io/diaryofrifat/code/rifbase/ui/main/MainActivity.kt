@@ -1,6 +1,6 @@
 package io.diaryofrifat.code.rifbase.ui.main
 
-import android.os.Bundle
+import android.view.View
 import io.diaryofrifat.code.rifbase.R
 import io.diaryofrifat.code.rifbase.databinding.ActivityMainBinding
 import io.diaryofrifat.code.rifbase.ui.base.BaseActivity
@@ -13,11 +13,6 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
      * */
     private lateinit var mBinding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mBinding = viewDataBinding as ActivityMainBinding
-    }
-
     override val layoutId: Int
         get() = R.layout.activity_main
 
@@ -26,11 +21,19 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
     }
 
     override fun startUI() {
+        mBinding = viewDataBinding as ActivityMainBinding
         GlideUtils.normal(mBinding.imageViewDemo,
                 "https://i.pinimg.com/originals/46/d9/15/46d915f51e10fccfbce9d6cb5df326b1.jpg")
+        setClickListener(mBinding.imageViewDemo)
     }
 
     override fun stopUI() {
 
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.image_view_demo -> presenter.one()
+        }
     }
 }

@@ -45,9 +45,6 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // Android data binding library compiler for Kotlin
-    kapt "com.android.databinding:compiler:$gradle_version"
-
     // ButterKnife library for binding views
     implementation "com.jakewharton:butterknife:$rootProject.ext.butterknife_version"
     kapt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife_version"

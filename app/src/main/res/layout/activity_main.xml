@@ -4,14 +4,14 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="io.diaryofrifat.code.rifbase.ui.main.MainActivity">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/image_view_demo"
             android:layout_width="@dimen/width_200"
             android:layout_height="@dimen/height_200"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription" />
 
     </android.support.design.widget.CoordinatorLayout>
 

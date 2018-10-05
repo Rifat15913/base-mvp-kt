@@ -117,6 +117,16 @@ class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
     }
 
     /**
+     * This method attaches the swipe handler to a particular RecyclerView
+     *
+     * @param recyclerView current RecyclerView
+     * @return [ItemTouchHelper] touch helper of the RecyclerView
+     * */
+    fun attachToRecyclerView(recyclerView: RecyclerView): ItemTouchHelper {
+        return ViewUtils.addSwipeHandler(recyclerView, this)
+    }
+
+    /**
      * Callback to get the state of swipe completed
      * */
     interface SwipeCallback {

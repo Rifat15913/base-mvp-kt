@@ -40,7 +40,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
         private set
     protected var currentFragment: BaseFragment<V, P>? = null
         private set
-    protected var presenter: P? = null
+    protected lateinit var presenter: P
 
     /**
      * The methods to be implemented by the child class (Abstract methods)
@@ -104,15 +104,15 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
             isPresenterCreated = true
         }
 
-        presenter = viewModel.getPresenter()
-        presenter?.attachLifecycle(lifecycle)
-        presenter?.attachView(this as V)
+        presenter = viewModel.getPresenter()!!
+        presenter.attachLifecycle(mLifecycleRegistry)
+        presenter.attachView(this as V)
 
         if (isPresenterCreated) {
-            presenter?.onPresenterCreated()
+            presenter.onPresenterCreated()
         }
 
-        presenter?.activity = this
+        presenter.activity = this
     }
 
     /**
@@ -184,8 +184,8 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
         super.onDestroy()
         this.stopUI()
 
-        presenter?.detachLifecycle(lifecycle)
-        presenter?.detachView()
+        presenter.detachLifecycle(mLifecycleRegistry)
+        presenter.detachView()
     }
 
     /**

@@ -19,4 +19,13 @@ interface ItemClickListener<T> {
      * @param position model object position in the list
      */
     fun onItemClick(view: View, item: T, position: Int) {}
+
+    /**
+     * This method sets this click listener to the adapter
+     *
+     * @param adapter RecyclerView adapter
+     * */
+    fun setAdapter(adapter: BaseAdapter<T>) {
+        adapter.setItemClickListener(this)
+    }
 }

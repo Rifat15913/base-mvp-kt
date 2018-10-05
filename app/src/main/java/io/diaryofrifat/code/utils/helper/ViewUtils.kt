@@ -181,17 +181,9 @@ class ViewUtils {
             recyclerView.adapter = adapter
             recyclerView.setHasFixedSize(true)
 
-            if (itemClickListener != null) {
-                adapter.setItemClickListener(itemClickListener)
-            }
-
-            if (itemLongClickListener != null) {
-                adapter.setItemLongClickListener(itemLongClickListener)
-            }
-
-            if (swipeItemHandler != null) {
-                ViewUtils.addSwipeHandler(recyclerView, swipeItemHandler)
-            }
+            itemClickListener?.setAdapter(adapter)
+            itemLongClickListener?.setAdapter(adapter)
+            swipeItemHandler?.attachToRecyclerView(recyclerView)
         }
 
         /**
