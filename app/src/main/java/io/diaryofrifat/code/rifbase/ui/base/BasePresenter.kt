@@ -4,6 +4,7 @@ import android.app.Activity
 import android.arch.lifecycle.*
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import io.reactivex.disposables.CompositeDisposable
 
 abstract class BasePresenter<V : MvpView> : LifecycleObserver, Presenter<V> {
 
@@ -19,14 +20,9 @@ abstract class BasePresenter<V : MvpView> : LifecycleObserver, Presenter<V> {
      * @OnLifecycleEvent(ON_ANY) void onAny(LifecycleOwner source, Event event) {}
      * }
      */
-
-    /**
-     * @return current MvpView
-     */
     @Volatile
     var mvpView: V? = null
         private set
-
 
     private var mStateBundle: Bundle? = null
         get() {
@@ -36,16 +32,8 @@ abstract class BasePresenter<V : MvpView> : LifecycleObserver, Presenter<V> {
             return field
         }
 
-    /**
-     * @return Activity current active activity
-     */
-    /**
-     * To set current Activity on presenter
-     *
-     * @param activity Activity as param
-     * @return void
-     */
     var activity: Activity? = null
+    val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
     /**
      * Check MvpView attached with presenter or not
@@ -74,6 +62,7 @@ abstract class BasePresenter<V : MvpView> : LifecycleObserver, Presenter<V> {
      * This method is called while detaching view
      * */
     override fun detachView() {
+        this.mCompositeDisposable.dispose()
         mvpView = null
     }
 
