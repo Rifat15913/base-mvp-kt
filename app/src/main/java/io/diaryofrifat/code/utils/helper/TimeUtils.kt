@@ -75,7 +75,7 @@ class TimeUtils private constructor() {
             val calendar = Calendar.getInstance()
             calendar.set(year, month, day)
 
-            return SimpleDateFormat(Constants.APP_COMMON_DATE_FORMAT,
+            return SimpleDateFormat(Constants.Common.APP_COMMON_DATE_FORMAT,
                     Locale.ENGLISH).format(calendar.time)
         }
 
@@ -88,7 +88,7 @@ class TimeUtils private constructor() {
         fun getCalendarFromDate(date: String): Calendar {
             val calendar = Calendar.getInstance()
             try {
-                calendar.time = SimpleDateFormat(Constants.APP_COMMON_DATE_FORMAT,
+                calendar.time = SimpleDateFormat(Constants.Common.APP_COMMON_DATE_FORMAT,
                         Locale.ENGLISH).parse(date)
             } catch (e: ParseException) {
                 Timber.e(e)

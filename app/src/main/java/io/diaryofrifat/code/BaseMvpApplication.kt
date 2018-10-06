@@ -3,7 +3,6 @@ package io.diaryofrifat.code
 import android.content.Context
 import android.support.multidex.MultiDexApplication
 import io.diaryofrifat.code.basemvp.BuildConfig
-import io.diaryofrifat.code.utils.libs.ToastUtils
 import timber.log.Timber
 
 class BaseMvpApplication : MultiDexApplication() {
@@ -39,6 +38,6 @@ class BaseMvpApplication : MultiDexApplication() {
     }
 
     private fun initiate() {
-        ToastUtils.init()
+
     }
 }

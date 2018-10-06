@@ -1,5 +1,6 @@
 package io.diaryofrifat.code.utils.helper
 
+import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -47,7 +48,23 @@ class AndroidUtils private constructor() {
             } catch (nameException: PackageManager.NameNotFoundException) {
                 null
             }
+        }
 
+        /**
+         * This method provides the state if a service is running or not
+         *
+         * @param context UI context
+         * @param serviceClass service class
+         * @return [Boolean] if the service is running or not
+         * */
+        fun isServiceRunning(context: Context, serviceClass: Class<*>): Boolean {
+            val manager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            for (service in manager.getRunningServices(Integer.MAX_VALUE)) {
+                if (serviceClass.name == service.service.className) {
+                    return true
+                }
+            }
+            return false
         }
     }
 }
