@@ -2,7 +2,9 @@ package io.diaryofrifat.code
 
 import android.content.Context
 import android.support.multidex.MultiDexApplication
+import com.squareup.leakcanary.LeakCanary
 import io.diaryofrifat.code.basemvp.BuildConfig
+import io.diaryofrifat.code.basemvp.data.BaseMvpRepository
 import timber.log.Timber
 
 class BaseMvpApplication : MultiDexApplication() {
@@ -22,9 +24,11 @@ class BaseMvpApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        initiate()
-        if (BuildConfig.DEBUG) {
-            initiateOnlyInDebugMode()
+        if (applicationContext != null) {
+            if (BuildConfig.DEBUG) {
+                initiateOnlyInDebugMode()
+            }
+            initiate(applicationContext)
         }
     }
 
@@ -35,9 +39,13 @@ class BaseMvpApplication : MultiDexApplication() {
                         ":${element.methodName}:${element.lineNumber}"
             }
         })
+
+        if (!LeakCanary.isInAnalyzerProcess(this)) {
+            LeakCanary.install(this)
+        }
     }
 
-    private fun initiate() {
-
+    private fun initiate(context: Context) {
+        BaseMvpRepository.init(context)
     }
 }

@@ -33,7 +33,7 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.image_view_demo -> presenter.one()
+            R.id.image_view_demo -> presenter.test()
         }
     }
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.helper.ItemTouchHelper
 import com.amulyakhare.textdrawable.TextDrawable
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.basemvp.ui.base.SwipeItemHandler.BackgroundMaterial.ICON
+import io.diaryofrifat.code.utils.helper.DataUtils
 import io.diaryofrifat.code.utils.helper.ViewUtils
 
 class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
@@ -64,7 +65,7 @@ class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
                             .textColor(ViewUtils.getColor(R.color.white))
                             .bold()
                             .endConfig()
-                            .buildRect(ViewUtils.getString(mBackgroundMaterialResourceId),
+                            .buildRect(DataUtils.getString(mBackgroundMaterialResourceId),
                                     ViewUtils.getColor(R.color.white))
                 }
 

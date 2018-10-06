@@ -1,5 +1,6 @@
 package io.diaryofrifat.code.utils.helper
 
+import io.diaryofrifat.code.BaseMvpApplication
 import java.util.*
 
 class DataUtils private constructor() {
@@ -22,6 +23,16 @@ class DataUtils private constructor() {
          * */
         fun randomInt(min: Int, max: Int): Int {
             return Random().nextInt(max - min + 1) + min
+        }
+
+        /**
+         * This method returns a local string
+         *
+         * @param resourceId desired resource id
+         * @return desired string
+         * */
+        fun getString(resourceId: Int): String {
+            return BaseMvpApplication.getBaseApplicationContext().getString(resourceId)
         }
     }
 }

@@ -49,16 +49,6 @@ class ViewUtils {
         }
 
         /**
-         * This method returns a local string
-         *
-         * @param resourceId desired resource id
-         * @return desired string
-         * */
-        fun getString(resourceId: Int): String {
-            return BaseMvpApplication.getBaseApplicationContext().getString(resourceId)
-        }
-
-        /**
          * This method returns a local drawable
          *
          * @param resourceId desired resource

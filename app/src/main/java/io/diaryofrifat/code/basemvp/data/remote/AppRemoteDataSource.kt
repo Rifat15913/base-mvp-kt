@@ -1,4 +1,5 @@
 package io.diaryofrifat.code.basemvp.data.remote
 
-class AppRemoteDataSource {
-}
+import android.content.Context
+
+class AppRemoteDataSource(context: Context)

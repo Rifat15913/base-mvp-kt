@@ -33,7 +33,7 @@ abstract class BasePresenter<V : MvpView> : LifecycleObserver, Presenter<V> {
         }
 
     var activity: Activity? = null
-    val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
+    val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     /**
      * Check MvpView attached with presenter or not
@@ -62,7 +62,7 @@ abstract class BasePresenter<V : MvpView> : LifecycleObserver, Presenter<V> {
      * This method is called while detaching view
      * */
     override fun detachView() {
-        this.mCompositeDisposable.dispose()
+        this.compositeDisposable.dispose()
         mvpView = null
     }
 
