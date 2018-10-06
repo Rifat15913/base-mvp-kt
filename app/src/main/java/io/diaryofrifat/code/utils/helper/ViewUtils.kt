@@ -1,5 +1,6 @@
 package io.diaryofrifat.code.utils.helper
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
 import io.diaryofrifat.code.BaseMvpApplication
@@ -211,6 +213,49 @@ class ViewUtils {
                 activity.supportActionBar?.setBackgroundDrawable(
                         ColorDrawable(getColor(colorResourceId)))
             }
+        }
+
+        /**
+         * This method provides width of the screen
+         *
+         * @param context UI context
+         * @return [Int] screen width in pixels
+         * */
+        fun getScreenWidth(context: Context): Int {
+            val windowManager = context
+                    .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val dm = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(dm)
+            return dm.widthPixels
+        }
+
+        /**
+         * This method provides height of the screen
+         *
+         * @param context UI context
+         * @return [Int] screen height in pixels
+         * */
+        fun getScreenHeight(context: Context): Int {
+            val windowManager = context
+                    .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val dm = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(dm)
+            return dm.heightPixels
+        }
+
+        /**
+         * This method provides the height of status bar
+         *
+         * @return [Int] status bar height in pixel
+         * */
+        fun getStatusBarHeight(): Int {
+            var result = 0
+            val resourceId = getResources()
+                    .getIdentifier("status_bar_height", "dimen", "android")
+            if (resourceId > 0) {
+                result = getResources().getDimensionPixelSize(resourceId)
+            }
+            return result
         }
     }
 }
