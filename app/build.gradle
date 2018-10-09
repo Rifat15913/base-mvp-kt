@@ -129,7 +129,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     // Text drawable
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
     // Room database
     kapt "android.arch.persistence.room:compiler:$rootProject.ext.room_version"
