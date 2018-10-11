@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.component
 
 import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.ViewModelProviders
@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.view.animation.AnimationUtils
 import butterknife.ButterKnife
+import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
 import timber.log.Timber
 
 abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),

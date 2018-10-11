@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.callback
 
 import android.arch.lifecycle.Lifecycle
 

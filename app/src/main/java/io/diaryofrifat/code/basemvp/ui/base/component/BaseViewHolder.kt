@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.component
 
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView

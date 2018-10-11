@@ -1,6 +1,7 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.callback
 
 import android.view.View
+import io.diaryofrifat.code.basemvp.ui.base.component.BaseAdapter
 
 interface ItemClickListener<T> {
     /**
