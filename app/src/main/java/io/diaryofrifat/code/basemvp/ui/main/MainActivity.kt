@@ -3,7 +3,7 @@ package io.diaryofrifat.code.basemvp.ui.main
 import android.view.View
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.basemvp.databinding.ActivityMainBinding
-import io.diaryofrifat.code.basemvp.ui.base.BaseActivity
+import io.diaryofrifat.code.basemvp.ui.base.component.BaseActivity
 import io.diaryofrifat.code.utils.libs.GlideUtils
 
 class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {

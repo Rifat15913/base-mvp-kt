@@ -1,6 +1,8 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.component
 
 import android.arch.lifecycle.ViewModel
+import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
+import io.diaryofrifat.code.basemvp.ui.base.callback.Presenter
 
 class BaseViewModel<V : MvpView, P : Presenter<V>> : ViewModel() {
     /**

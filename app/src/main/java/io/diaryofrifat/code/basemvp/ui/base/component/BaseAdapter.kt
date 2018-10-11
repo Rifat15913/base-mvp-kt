@@ -1,10 +1,12 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.component
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import io.diaryofrifat.code.basemvp.ui.base.callback.ItemClickListener
+import io.diaryofrifat.code.basemvp.ui.base.callback.ItemLongClickListener
 import java.util.*
 
 abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {

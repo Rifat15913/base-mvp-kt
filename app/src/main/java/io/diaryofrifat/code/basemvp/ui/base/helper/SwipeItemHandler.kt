@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.helper
 
 import android.graphics.Canvas
 import android.graphics.drawable.ColorDrawable
@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import com.amulyakhare.textdrawable.TextDrawable
 import io.diaryofrifat.code.basemvp.R
-import io.diaryofrifat.code.basemvp.ui.base.SwipeItemHandler.BackgroundMaterial.ICON
+import io.diaryofrifat.code.basemvp.ui.base.helper.SwipeItemHandler.BackgroundMaterial.ICON
 import io.diaryofrifat.code.utils.helper.DataUtils
 import io.diaryofrifat.code.utils.helper.ViewUtils
 
@@ -21,8 +21,8 @@ class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
 
     init {
         val direction: Int = when (mSwipeDirection) {
-            SwipeItemHandler.SwipeDirection.LEFT -> ItemTouchHelper.LEFT
-            SwipeItemHandler.SwipeDirection.RIGHT -> ItemTouchHelper.RIGHT
+            SwipeDirection.LEFT -> ItemTouchHelper.LEFT
+            SwipeDirection.RIGHT -> ItemTouchHelper.RIGHT
         }
 
         setDefaultSwipeDirs(direction)
@@ -73,7 +73,7 @@ class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
         background.color = ViewUtils.getColor(mBackgroundColorResourceId)
 
         when (mSwipeDirection) {
-            SwipeItemHandler.SwipeDirection.LEFT -> {
+            SwipeDirection.LEFT -> {
                 backgroundUpBound = itemView.top
                 backgroundDownBound = itemView.bottom
                 backgroundLeftBound = (itemView.right + dX).toInt()
@@ -88,7 +88,7 @@ class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
                 }
             }
 
-            SwipeItemHandler.SwipeDirection.RIGHT -> {
+            SwipeDirection.RIGHT -> {
                 backgroundLeftBound = itemView.left
                 backgroundUpBound = itemView.top
                 backgroundDownBound = itemView.bottom

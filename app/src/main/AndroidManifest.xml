@@ -12,7 +12,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="io.diaryofrifat.code.basemvp.ui.main.MainActivity">
+        <activity
+            android:name="io.diaryofrifat.code.basemvp.ui.main.MainActivity"
+            android:theme="@style/AppTheme.GradientStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

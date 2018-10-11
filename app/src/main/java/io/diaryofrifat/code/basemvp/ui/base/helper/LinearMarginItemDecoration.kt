@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.helper
 
 import android.graphics.Rect
 import android.support.v7.widget.RecyclerView

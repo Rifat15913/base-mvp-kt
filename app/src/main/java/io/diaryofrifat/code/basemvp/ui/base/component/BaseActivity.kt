@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.ui.base
+package io.diaryofrifat.code.basemvp.ui.base.component
 
 import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.ViewModelProviders
@@ -15,6 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import butterknife.ButterKnife
+import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
 import io.diaryofrifat.code.utils.helper.ViewUtils
 import timber.log.Timber
 

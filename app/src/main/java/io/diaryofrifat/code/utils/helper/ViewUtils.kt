@@ -19,10 +19,10 @@ import android.view.View
 import android.view.WindowManager
 import io.diaryofrifat.code.BaseMvpApplication
 import io.diaryofrifat.code.basemvp.R
-import io.diaryofrifat.code.basemvp.ui.base.BaseAdapter
-import io.diaryofrifat.code.basemvp.ui.base.ItemClickListener
-import io.diaryofrifat.code.basemvp.ui.base.ItemLongClickListener
-import io.diaryofrifat.code.basemvp.ui.base.SwipeItemHandler
+import io.diaryofrifat.code.basemvp.ui.base.callback.ItemClickListener
+import io.diaryofrifat.code.basemvp.ui.base.callback.ItemLongClickListener
+import io.diaryofrifat.code.basemvp.ui.base.component.BaseAdapter
+import io.diaryofrifat.code.basemvp.ui.base.helper.SwipeItemHandler
 import io.reactivex.Observable
 
 
