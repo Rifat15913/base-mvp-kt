@@ -56,7 +56,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     // Lifecycle (Java 8 Support / instead of lifecycle compiler)
-    implementation 'android.arch.lifecycle:common-java8:1.1.1'
+    implementation "android.arch.lifecycle:common-java8:$rootProject.ext.lifecycle_version"
 
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifecycle_version"
