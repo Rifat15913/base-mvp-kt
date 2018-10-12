@@ -33,7 +33,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * Fields
      * */
     // Child class has to pass it's layout resource id via this field
-    protected abstract val layoutId: Int
+    protected abstract val layoutResourceId: Int
     // Child class data binding object for views
     protected var viewDataBinding: ViewDataBinding? = null
         private set
@@ -82,7 +82,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (layoutId > INVALID_ID) {
+        if (layoutResourceId > INVALID_ID) {
             initializeLayout()
             initializePresenter()
             initializeToolbar()
@@ -121,13 +121,13 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * */
     private fun initializeLayout() {
         try {
-            viewDataBinding = DataBindingUtil.setContentView(this, layoutId)
+            viewDataBinding = DataBindingUtil.setContentView(this, layoutResourceId)
         } catch (e: Exception) {
             Timber.e(e)
         }
 
         if (viewDataBinding == null) {
-            setContentView(layoutId)
+            setContentView(layoutResourceId)
             ButterKnife.bind(this)
         }
     }

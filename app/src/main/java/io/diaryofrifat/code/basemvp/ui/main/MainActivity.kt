@@ -13,7 +13,7 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
      * */
     private lateinit var mBinding: ActivityMainBinding
 
-    override val layoutId: Int
+    override val layoutResourceId: Int
         get() = R.layout.activity_main
 
     override fun getActivityPresenter(): MainPresenter {
