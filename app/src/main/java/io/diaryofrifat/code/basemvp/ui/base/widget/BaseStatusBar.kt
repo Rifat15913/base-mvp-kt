@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.ui.base.view
+package io.diaryofrifat.code.basemvp.ui.base.widget
 
 import android.content.Context
 import android.os.Build
