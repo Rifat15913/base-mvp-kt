@@ -1,14 +1,14 @@
 package io.diaryofrifat.code.basemvp.ui.base.component
 
-import android.arch.lifecycle.LifecycleRegistry
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.v4.app.Fragment
 import android.view.*
 import android.view.animation.AnimationUtils
+import androidx.annotation.CallSuper
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.ViewModelProviders
 import butterknife.ButterKnife
 import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
 import timber.log.Timber

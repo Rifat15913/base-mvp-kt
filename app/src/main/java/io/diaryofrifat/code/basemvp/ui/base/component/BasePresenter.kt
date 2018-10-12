@@ -1,9 +1,9 @@
 package io.diaryofrifat.code.basemvp.ui.base.component
 
 import android.app.Activity
-import android.arch.lifecycle.*
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.*
 import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
 import io.diaryofrifat.code.basemvp.ui.base.callback.Presenter
 import io.reactivex.disposables.CompositeDisposable

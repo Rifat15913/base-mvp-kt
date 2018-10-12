@@ -3,7 +3,7 @@ package io.diaryofrifat.code.utils.helper
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import io.diaryofrifat.code.BaseMvpApplication
 import java.util.*
 

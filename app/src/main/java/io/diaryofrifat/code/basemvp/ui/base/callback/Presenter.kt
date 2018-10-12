@@ -1,6 +1,6 @@
 package io.diaryofrifat.code.basemvp.ui.base.callback
 
-import android.arch.lifecycle.Lifecycle
+import androidx.lifecycle.Lifecycle
 
 interface Presenter<V : MvpView> {
 

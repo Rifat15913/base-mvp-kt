@@ -1,8 +1,8 @@
 package io.diaryofrifat.code.basemvp.ui.base.component
 
-import android.databinding.ViewDataBinding
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseViewHolder<T>(private val viewDataBinding: ViewDataBinding)
     : RecyclerView.ViewHolder(viewDataBinding.root), View.OnClickListener {

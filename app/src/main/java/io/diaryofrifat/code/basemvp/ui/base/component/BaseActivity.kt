@@ -1,19 +1,19 @@
 package io.diaryofrifat.code.basemvp.ui.base.component
 
-import android.arch.lifecycle.LifecycleRegistry
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.annotation.CallSuper
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.ViewModelProviders
 import butterknife.ButterKnife
 import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
 import io.diaryofrifat.code.utils.helper.ViewUtils

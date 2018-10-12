@@ -3,8 +3,8 @@ package io.diaryofrifat.code.basemvp.ui.base.helper
 import android.graphics.Canvas
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.amulyakhare.textdrawable.TextDrawable
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.basemvp.ui.base.helper.SwipeItemHandler.BackgroundMaterial.ICON
