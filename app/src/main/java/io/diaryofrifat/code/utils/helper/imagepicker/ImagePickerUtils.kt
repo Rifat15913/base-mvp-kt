@@ -11,7 +11,7 @@ import android.graphics.Matrix
 import android.net.Uri
 import android.os.Parcelable
 import android.provider.MediaStore
-import android.support.media.ExifInterface
+import androidx.exifinterface.media.ExifInterface
 import java.io.File
 import java.io.FileNotFoundException
 import java.util.*

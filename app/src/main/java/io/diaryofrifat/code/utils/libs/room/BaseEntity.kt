@@ -1,9 +1,8 @@
 package io.diaryofrifat.code.utils.libs.room
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.PrimaryKey
 import android.os.Parcelable
-
+import androidx.room.ColumnInfo
+import androidx.room.PrimaryKey
 import io.diaryofrifat.code.utils.helper.Constants
 
 abstract class BaseEntity : Parcelable {

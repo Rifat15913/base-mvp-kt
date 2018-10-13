@@ -1,7 +1,7 @@
 package io.diaryofrifat.code.basemvp.data.helper.appdatabase
 
-import android.arch.persistence.room.Database
 import android.content.Context
+import androidx.room.Database
 
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.basemvp.data.local.model.user.UserDao

@@ -3,7 +3,7 @@ package io.diaryofrifat.code.utils.libs
 import android.app.Activity
 import android.content.Context
 import android.net.Uri
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import com.yalantis.ucrop.UCrop
 import io.diaryofrifat.code.basemvp.R
 import java.io.File

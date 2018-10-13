@@ -1,19 +1,19 @@
 package io.diaryofrifat.code.basemvp.ui.base.component
 
-import android.arch.lifecycle.LifecycleRegistry
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.annotation.CallSuper
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.ViewModelProviders
 import butterknife.ButterKnife
 import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
 import io.diaryofrifat.code.utils.helper.ViewUtils
@@ -33,7 +33,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * Fields
      * */
     // Child class has to pass it's layout resource id via this field
-    protected abstract val layoutId: Int
+    protected abstract val layoutResourceId: Int
     // Child class data binding object for views
     protected var viewDataBinding: ViewDataBinding? = null
         private set
@@ -82,7 +82,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (layoutId > INVALID_ID) {
+        if (layoutResourceId > INVALID_ID) {
             initializeLayout()
             initializePresenter()
             initializeToolbar()
@@ -121,13 +121,13 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * */
     private fun initializeLayout() {
         try {
-            viewDataBinding = DataBindingUtil.setContentView(this, layoutId)
+            viewDataBinding = DataBindingUtil.setContentView(this, layoutResourceId)
         } catch (e: Exception) {
             Timber.e(e)
         }
 
         if (viewDataBinding == null) {
-            setContentView(layoutId)
+            setContentView(layoutResourceId)
             ButterKnife.bind(this)
         }
     }

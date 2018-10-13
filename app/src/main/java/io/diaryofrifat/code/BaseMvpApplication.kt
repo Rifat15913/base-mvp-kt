@@ -1,7 +1,7 @@
 package io.diaryofrifat.code
 
 import android.content.Context
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
 import io.diaryofrifat.code.basemvp.BuildConfig
 import io.diaryofrifat.code.basemvp.data.BaseMvpRepository
