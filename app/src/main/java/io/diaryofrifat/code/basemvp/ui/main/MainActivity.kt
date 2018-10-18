@@ -1,13 +1,18 @@
 package io.diaryofrifat.code.basemvp.ui.main
 
 import android.view.View
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.diaryofrifat.code.basemvp.R
+import io.diaryofrifat.code.basemvp.data.remote.retrophoto.RetroPhoto
 import io.diaryofrifat.code.basemvp.databinding.ActivityMainBinding
 import io.diaryofrifat.code.basemvp.ui.base.component.BaseActivity
-import io.diaryofrifat.code.utils.libs.GlideUtils
+import io.diaryofrifat.code.basemvp.ui.base.helper.LinearMarginItemDecoration
+import io.diaryofrifat.code.utils.helper.ViewUtils
+import io.diaryofrifat.code.utils.libs.ToastUtils
 
 class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
-
     /**
      * Fields
      * */
@@ -22,9 +27,33 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
 
     override fun startUI() {
         mBinding = viewDataBinding as ActivityMainBinding
-        GlideUtils.normal(mBinding.imageViewDemo,
-                "https://i.pinimg.com/originals/46/d9/15/46d915f51e10fccfbce9d6cb5df326b1.jpg")
-        setClickListener(mBinding.imageViewDemo)
+
+        ViewUtils.initializeRecyclerView(
+                mBinding.recyclerViewPhotos,
+                MainAdapter(),
+                null,
+                null,
+                LinearLayoutManager(this),
+                LinearMarginItemDecoration(ViewUtils.getPixel(R.dimen.margin_16)),
+                null,
+                DefaultItemAnimator()
+        )
+
+        presenter.test()
+    }
+
+    private fun getRecyclerView(): RecyclerView {
+        return mBinding.recyclerViewPhotos
+    }
+
+    private fun getAdapter(): MainAdapter {
+        return getRecyclerView().adapter as MainAdapter
+    }
+
+    override fun onFetchingData(list: List<RetroPhoto>) {
+        getAdapter().clear()
+        getAdapter().addItems(list)
+        ToastUtils.success("Successful")
     }
 
     override fun stopUI() {
@@ -33,7 +62,7 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.image_view_demo -> presenter.test()
+
         }
     }
 }

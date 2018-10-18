@@ -1,6 +1,6 @@
 package io.diaryofrifat.code.basemvp.data.remote.retrophoto
 
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface RetroPhotoService {
     @GET("/photos")
-    fun getAllPhotos(): Observable<List<RetroPhoto>>
+    fun getAllPhotos(): Flowable<List<RetroPhoto>>
 
     companion object {
         private val sRetrofitBuilder = Retrofit.Builder()

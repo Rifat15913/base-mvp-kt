@@ -149,6 +149,11 @@ abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
 
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.compositeDisposable.clear()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         this.stopUI()

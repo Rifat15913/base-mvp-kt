@@ -6,7 +6,7 @@ import io.diaryofrifat.code.basemvp.data.local.user.UserEntity
 import io.diaryofrifat.code.basemvp.data.remote.AppRemoteDataSource
 import io.diaryofrifat.code.basemvp.data.remote.retrophoto.RetroPhoto
 import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.Flowable
 
 class BaseMvpRepository(context: Context) {
     /**
@@ -34,7 +34,7 @@ class BaseMvpRepository(context: Context) {
         return mAppLocalDataSource.insertCompletable(entity)
     }
 
-    fun getAllPhotosFromServer() : Observable<List<RetroPhoto>>{
+    fun getAllPhotosFromServer(): Flowable<List<RetroPhoto>> {
         return mAppRemoteDataSource.getAllPhotos()
     }
 }

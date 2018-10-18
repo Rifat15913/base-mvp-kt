@@ -38,6 +38,24 @@ class ViewUtils {
         }
 
         /**
+         * This method returns locally stored dimension
+         *
+         * @return desired dimension
+         * */
+        fun getDimension(resourceId: Int): Float {
+            return getResources().getDimension(resourceId)
+        }
+
+        /**
+         * This method returns locally stored dimension in pixel
+         *
+         * @return desired dimension in pixel
+         * */
+        fun getPixel(resourceId: Int): Int {
+            return getResources().getDimensionPixelSize(resourceId)
+        }
+
+        /**
          * This method returns a local font
          *
          * @param resourceId desired resource id
