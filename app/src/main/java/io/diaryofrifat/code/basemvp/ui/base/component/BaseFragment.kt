@@ -49,7 +49,7 @@ abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
      * Optional to be overridden methods
      * */
     // Child class will pass the menu id by this method
-    protected fun getMenuId(): Int {
+    protected open fun getMenuId(): Int {
         return INVALID_ID
     }
 

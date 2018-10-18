@@ -25,6 +25,14 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
         return MainPresenter()
     }
 
+    override fun getToolbarId(): Int? {
+        return R.id.toolbar
+    }
+
+    override fun shouldShowBackIconAtToolbar(): Boolean {
+        return false
+    }
+
     override fun startUI() {
         mBinding = viewDataBinding as ActivityMainBinding
 
