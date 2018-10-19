@@ -9,7 +9,6 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleRegistry
@@ -59,22 +58,22 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * Optional to be overridden methods
      * */
     // Child class will pass the status bar color resource id by this method
-    protected fun getStatusBarColorResId(): Int {
+    protected open fun getStatusBarColorResId(): Int {
         return INVALID_ID
     }
 
     // Child class will pass the toolbar id by this method
-    protected fun getToolbar(): Toolbar? {
-        return null
+    protected open fun getToolbarId(): Int? {
+        return INVALID_ID
     }
 
     // This method sets if the back icon should be shown or not at toolbar
-    protected fun shouldShowBackIconAtToolbar(): Boolean {
+    protected open fun shouldShowBackIconAtToolbar(): Boolean {
         return true
     }
 
     // Child class will pass the menu id by this method
-    protected fun getMenuId(): Int {
+    protected open fun getMenuId(): Int {
         return INVALID_ID
     }
 
@@ -136,8 +135,8 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * This method initializes the toolbar
      * */
     private fun initializeToolbar() {
-        if (getToolbar() != null && shouldShowBackIconAtToolbar()) {
-            setSupportActionBar(getToolbar())
+        if (getToolbarId() != INVALID_ID && shouldShowBackIconAtToolbar()) {
+            setSupportActionBar(findViewById(getToolbarId()!!))
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setDisplayShowHomeEnabled(true)
         }
@@ -179,6 +178,11 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.compositeDisposable.clear()
     }
 
     override fun onDestroy() {

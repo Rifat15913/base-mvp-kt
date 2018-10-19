@@ -10,9 +10,29 @@ import com.bumptech.glide.request.RequestOptions
 import io.diaryofrifat.code.BaseMvpApplication
 import java.util.concurrent.ExecutionException
 
-// TODO: Introduce more methods
 class GlideUtils private constructor() {
     companion object {
+        /**
+         * This method loads image into ImageView using glide library with caching
+         *
+         * @param imageView ImageView where to load the image
+         * @param source image location
+         */
+        fun normalWithCaching(imageView: ImageView, source: Any) {
+            default(imageView, source, true, ImageCropType.NONE, null)
+        }
+
+        /**
+         * This method loads image into ImageView using glide library with caching
+         *
+         * @param imageView ImageView where to load the image
+         * @param source image location
+         * @param requestListener listens to the state
+         */
+        fun normalWithCaching(imageView: ImageView, source: Any, requestListener: RequestListener<Bitmap>) {
+            default(imageView, source, true, ImageCropType.NONE, requestListener)
+        }
+
         /**
          * This method loads image into ImageView using glide library but does not cache or crop.
          *

@@ -36,7 +36,7 @@ class BaseMvpApplication : MultiDexApplication() {
         Timber.plant(object : Timber.DebugTree() {
             override fun createStackElementTag(element: StackTraceElement): String? {
                 return super.createStackElementTag(element) +
-                        ":${element.methodName}:${element.lineNumber}"
+                        " - Method:${element.methodName} - Line:${element.lineNumber}"
             }
         })
 

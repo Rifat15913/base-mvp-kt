@@ -1,4 +1,4 @@
-package io.diaryofrifat.code.basemvp.data.local.model.user
+package io.diaryofrifat.code.basemvp.data.local.user
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 
 import io.diaryofrifat.code.basemvp.R
-import io.diaryofrifat.code.basemvp.data.local.model.user.UserDao
-import io.diaryofrifat.code.basemvp.data.local.model.user.UserEntity
+import io.diaryofrifat.code.basemvp.data.local.user.UserDao
+import io.diaryofrifat.code.basemvp.data.local.user.UserEntity
 import io.diaryofrifat.code.utils.helper.DataUtils
 import io.diaryofrifat.code.utils.libs.room.BaseDatabase
 
