@@ -50,15 +50,14 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
                 DefaultItemAnimator()
         )
 
-        presenter.compositeDisposable.add(
-                getAdapter().dataChanges()
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe({
-                            Timber.d(it.toString())
-                        }, {
-                            Timber.e(it)
-                        }))
+        presenter.compositeDisposable.add(getAdapter().dataChanges()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    Timber.d(it.toString())
+                }, {
+                    Timber.e(it)
+                }))
 
         presenter.test()
     }
