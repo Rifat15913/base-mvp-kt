@@ -11,6 +11,9 @@ import io.diaryofrifat.code.basemvp.ui.base.component.BaseActivity
 import io.diaryofrifat.code.basemvp.ui.base.helper.LinearMarginItemDecoration
 import io.diaryofrifat.code.utils.helper.ViewUtils
 import io.diaryofrifat.code.utils.libs.ToastUtils
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
     /**
@@ -46,6 +49,16 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
                 null,
                 DefaultItemAnimator()
         )
+
+        presenter.compositeDisposable.add(
+                getAdapter().dataChanges()
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribe({
+                            Timber.d(it.toString())
+                        }, {
+                            Timber.e(it)
+                        }))
 
         presenter.test()
     }

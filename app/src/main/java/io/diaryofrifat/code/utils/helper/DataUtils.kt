@@ -34,5 +34,15 @@ class DataUtils private constructor() {
         fun getString(resourceId: Int): String {
             return BaseMvpApplication.getBaseApplicationContext().getString(resourceId)
         }
+
+        /**
+         * This method returns a local integer
+         *
+         * @param resourceId desired resource id
+         * @return desired integer
+         * */
+        fun getInteger(resourceId: Int): Int {
+            return ViewUtils.getResources().getInteger(resourceId)
+        }
     }
 }

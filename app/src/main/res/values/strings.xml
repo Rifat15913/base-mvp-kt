@@ -4,4 +4,5 @@
     <!--Error-->
     <string name="error_could_not_create_bitmap">Could not create bitmap from the view</string>
     <string name="error_dao_is_null">Dao is null</string>
+    <string name="error_adapter_size_is_null">Adapter size is null</string>
 </resources>
