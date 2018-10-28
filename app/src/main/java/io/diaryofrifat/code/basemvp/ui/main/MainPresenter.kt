@@ -10,6 +10,7 @@ class MainPresenter : BasePresenter<MainMvpView>() {
     fun test() {
         compositeDisposable.add(
                 BaseMvpRepository.on().getAllPhotosFromServer()
+                        .map { it.subList(0, 9) }
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
                         .subscribe({
