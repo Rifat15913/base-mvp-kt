@@ -1,5 +1,7 @@
 package io.diaryofrifat.code.utils.helper
 
+import android.content.ContentResolver
+import android.net.Uri
 import io.diaryofrifat.code.BaseMvpApplication
 import java.util.*
 
@@ -43,6 +45,17 @@ class DataUtils private constructor() {
          * */
         fun getInteger(resourceId: Int): Int {
             return ViewUtils.getResources().getInteger(resourceId)
+        }
+
+        /**
+         * This method returns a local resource [Uri]
+         *
+         * @param resourceId desired resource id
+         * @return desired [Uri]
+         * */
+        fun getUriFromResource(resourceId: Int): Uri {
+            return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+                    + AndroidUtils.getApplicationId() + "/" + resourceId)
         }
     }
 }

@@ -1,6 +1,7 @@
 package io.diaryofrifat.code
 
 import android.content.Context
+import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
 import io.diaryofrifat.code.basemvp.BuildConfig
@@ -47,5 +48,10 @@ class BaseMvpApplication : MultiDexApplication() {
 
     private fun initiate(context: Context) {
         BaseMvpRepository.init(context)
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 }
