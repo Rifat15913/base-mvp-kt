@@ -25,6 +25,14 @@ object NotificationUtils {
                 NotificationChannelDetails("DefaultId", "Default", "Default Notification")
     }
 
+    /**
+     * This method creates notification channel (Target API >= 26 (Oreo))
+     *
+     * @param notificationManager notification manager of the system
+     * @param channelDetails details required to create the channel
+     * @param channelImportance importance of the channel
+     * @param soundFileUri path of custom sound file
+     * */
     private fun createNotificationChannel(notificationManager: NotificationManager,
                                           channelDetails: NotificationChannelDetails,
                                           channelImportance: Int, soundFileUri: Uri?) {
@@ -46,6 +54,16 @@ object NotificationUtils {
         }
     }
 
+    /**
+     * This method builds a notification
+     *
+     * @param notificationId unique id of the notification
+     * @param notificationType type of the notification
+     * @param iconResourceId resource id for icon
+     * @param title title of the notification
+     * @param subtitle subtitle of the notification
+     * @param soundFileResourceId resource id of the custom sound file
+     * */
     fun buildNotification(notificationId: Int,
                           notificationType: NotificationType,
                           iconResourceId: Int,
