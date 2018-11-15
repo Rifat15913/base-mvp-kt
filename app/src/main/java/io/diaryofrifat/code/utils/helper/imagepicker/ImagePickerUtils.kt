@@ -11,6 +11,7 @@ import android.graphics.Matrix
 import android.net.Uri
 import android.os.Parcelable
 import android.provider.MediaStore
+import android.text.TextUtils
 import androidx.exifinterface.media.ExifInterface
 import java.io.File
 import java.io.FileNotFoundException
@@ -172,9 +173,14 @@ object ImagePickerUtils {
 
     private fun getRotationFromCamera(context: Context, imageFile: Uri): Int {
         var rotate = 0
+
+        if (TextUtils.isEmpty(imageFile.path)) {
+            return rotate
+        }
+
         try {
             context.contentResolver.notifyChange(imageFile, null)
-            val exif = ExifInterface(imageFile.path)
+            val exif = ExifInterface(imageFile.path!!)
             val orientation = exif.getAttributeInt(
                     ExifInterface.TAG_ORIENTATION,
                     ExifInterface.ORIENTATION_NORMAL)

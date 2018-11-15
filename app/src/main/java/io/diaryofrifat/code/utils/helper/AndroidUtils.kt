@@ -4,6 +4,7 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import io.diaryofrifat.code.BaseMvpApplication
 
 class AndroidUtils private constructor() {
@@ -22,8 +23,13 @@ class AndroidUtils private constructor() {
          *
          * @return [Int] version code
          * */
-        fun getVersionCode(): Int {
-            return getPackageInfo()?.versionCode ?: 0
+        @Suppress("DEPRECATION")
+        fun getVersionCode(): Long {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                getPackageInfo()?.longVersionCode ?: 0
+            } else {
+                getPackageInfo()?.versionCode as Long? ?: 0
+            }
         }
 
         /**
@@ -57,6 +63,7 @@ class AndroidUtils private constructor() {
          * @param serviceClass service class
          * @return [Boolean] if the service is running or not
          * */
+        @Suppress("DEPRECATION")
         fun isServiceRunning(context: Context, serviceClass: Class<*>): Boolean {
             val manager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
             for (service in manager.getRunningServices(Integer.MAX_VALUE)) {

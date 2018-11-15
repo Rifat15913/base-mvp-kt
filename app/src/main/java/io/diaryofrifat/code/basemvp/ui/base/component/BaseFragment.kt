@@ -53,6 +53,7 @@ abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
         return INVALID_ID
     }
 
+    @Suppress("UNCHECKED_CAST")
     private val baseActivity: BaseActivity<V, P>?
         get() = activity as BaseActivity<V, P>?
 
@@ -131,6 +132,7 @@ abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
 
         presenter = viewModel.getPresenter()!!
         presenter.attachLifecycle(mLifecycleRegistry)
+        @Suppress("UNCHECKED_CAST")
         presenter.attachView(this as V)
 
         if (isPresenterCreated) {
