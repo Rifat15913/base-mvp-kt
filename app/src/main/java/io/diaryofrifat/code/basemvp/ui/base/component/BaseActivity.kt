@@ -106,6 +106,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
 
         presenter = viewModel.getPresenter()!!
         presenter.attachLifecycle(mLifecycleRegistry)
+        @Suppress("UNCHECKED_CAST")
         presenter.attachView(this as V)
 
         if (isPresenterCreated) {

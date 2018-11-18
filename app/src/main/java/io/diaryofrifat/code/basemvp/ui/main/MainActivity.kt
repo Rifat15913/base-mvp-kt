@@ -10,10 +10,11 @@ import io.diaryofrifat.code.basemvp.databinding.ActivityMainBinding
 import io.diaryofrifat.code.basemvp.ui.base.component.BaseActivity
 import io.diaryofrifat.code.basemvp.ui.base.helper.LinearMarginItemDecoration
 import io.diaryofrifat.code.utils.helper.ViewUtils
-import io.diaryofrifat.code.utils.libs.ToastUtils
+import io.diaryofrifat.code.utils.helper.notification.NotificationUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
+
 
 class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
     /**
@@ -59,6 +60,13 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
                     Timber.e(it)
                 }))
 
+        NotificationUtils.buildNotification(1234,
+                NotificationUtils.NotificationType.DEFAULT,
+                R.drawable.leak_canary_icon_foreground,
+                "Hello Notification",
+                "Hello Notification Caption",
+                R.raw.notification)
+
         presenter.test()
     }
 
@@ -73,7 +81,6 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
     override fun onFetchingData(list: List<RetroPhoto>) {
         getAdapter().clear()
         getAdapter().addItems(list)
-        ToastUtils.success("Successful")
     }
 
     override fun stopUI() {
