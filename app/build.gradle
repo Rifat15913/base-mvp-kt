@@ -100,7 +100,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
     // Circular ImageView
-    implementation 'com.mikhaellopez:circularimageview:3.1.0'
+    implementation 'com.mikhaellopez:circularimageview:3.2.0'
 
     // Glide (Image loader)
     implementation 'com.github.bumptech.glide:glide:4.8.0'
@@ -113,7 +113,7 @@ dependencies {
 
     // Reactive Extensions (Rx)
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
 
     // Gson to convert from and to json
     implementation 'com.google.code.gson:gson:2.8.5'
