@@ -1,5 +1,10 @@
 package io.diaryofrifat.code.utils.helper
 
+import android.content.Context
+import android.os.Environment
+import timber.log.Timber
+import java.io.File
+import java.io.IOException
 import java.util.*
 
 class FileUtils private constructor() {
@@ -623,6 +628,36 @@ class FileUtils private constructor() {
         fun getFileMimeType(fileType: String): String? {
             if (sMimeTypes.size == 0) init()
             return sMimeTypes[fileType]
+        }
+
+        /**
+         * This method provides a file to save captured image using camera of the device
+         *
+         * @param context context
+         * @return [File] an empty file
+         * */
+        fun getEmptyFileForSavingCapturedImage(context: Context): File? {
+            val fileName =
+                    Constants.File.PREFIX_IMAGE + TimeUtils.currentTime() + Constants.File.SUFFIX_IMAGE
+            val storageDirectory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val file = File(storageDirectory, fileName)
+
+            try {
+                if (!file.exists()) {
+                    file.createNewFile()
+                }
+            } catch (e: IOException) {
+                Timber.e(e)
+                return null
+            }
+
+            if (file.parentFile == null) {
+                file.mkdirs()
+            } else {
+                file.parentFile.mkdirs()
+            }
+
+            return file
         }
     }
 }
