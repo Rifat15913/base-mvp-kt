@@ -30,7 +30,6 @@ object ImagePickerUtils {
     private var mListener: Listener? = null
     private var mCapturedImageFile: File? = null
 
-
     /**
      * This method provides option to pick image from camera, gallery and other applications
      *
@@ -105,6 +104,8 @@ object ImagePickerUtils {
     }
 
     private fun getImagePickingIntent(context: Context): Intent? {
+
+        // TODO: Find bug by entering here without taking permission from user
 
         var chooserIntent: Intent? = null
         var intentList: MutableList<Intent> = ArrayList()

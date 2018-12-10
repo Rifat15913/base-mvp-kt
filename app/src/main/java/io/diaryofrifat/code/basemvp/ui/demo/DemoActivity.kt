@@ -1,9 +1,12 @@
 package io.diaryofrifat.code.basemvp.ui.demo
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.view.View
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.basemvp.databinding.ActivityDemoBinding
 import io.diaryofrifat.code.basemvp.ui.base.component.BaseActivity
+import io.diaryofrifat.code.utils.helper.PermissionUtils
 import io.diaryofrifat.code.utils.helper.imagepicker.ImageInfo
 import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils
 import timber.log.Timber
@@ -30,16 +33,49 @@ class DemoActivity : BaseActivity<DemoMvpView, DemoPresenter>() {
 
         when (view.id) {
             R.id.button_do -> {
-                ImagePickerUtils.pickImage(this, object : ImagePickerUtils.Listener {
-                    override fun onError(error: Throwable) {
-                        Timber.e(error)
+                if (PermissionUtils.requestPermission(this,
+                                Manifest.permission.CAMERA,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    pickImage()
+                }
+            }
+        }
+    }
+
+    private fun pickImage() {
+        ImagePickerUtils.pickImage(this, object : ImagePickerUtils.Listener {
+            override fun onError(error: Throwable) {
+                Timber.e(error)
+            }
+
+            override fun onSuccess(imageInfo: ImageInfo) {
+                Timber.e(imageInfo.isTakenByCamera.toString())
+                Timber.e(imageInfo.imageUri.toString())
+            }
+        })
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == PermissionUtils.REQUEST_CODE_PERMISSION_DEFAULT) {
+            for (i in permissions.indices) {
+                when (permissions[i]) {
+                    Manifest.permission.CAMERA -> {
+
                     }
 
-                    override fun onSuccess(imageInfo: ImageInfo) {
-                        Timber.e(imageInfo.isTakenByCamera.toString())
-                        Timber.e(imageInfo.imageUri.toString())
+                    Manifest.permission.READ_EXTERNAL_STORAGE -> {
+
                     }
-                })
+
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE -> {
+                        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                            pickImage()
+                        }
+                    }
+                }
             }
         }
     }
