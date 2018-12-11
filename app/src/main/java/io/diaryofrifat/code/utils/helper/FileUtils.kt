@@ -637,9 +637,29 @@ class FileUtils private constructor() {
          * @return [File] an empty file
          * */
         fun getEmptyFileForSavingCapturedImage(context: Context): File? {
-            val fileName =
-                    Constants.File.PREFIX_IMAGE + TimeUtils.currentTime() + Constants.File.SUFFIX_IMAGE
-            val storageDirectory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            return getEmptyFile(context, Constants.File.PREFIX_IMAGE,
+                    TimeUtils.currentTime().toString(), Constants.File.SUFFIX_IMAGE,
+                    Environment.DIRECTORY_PICTURES)
+        }
+
+        /**
+         * This method provides a file to save cropped image
+         *
+         * @param context context
+         * @return [File] an empty file
+         * */
+        fun getEmptyFileForSavingCroppedImage(context: Context): File? {
+            return getEmptyFile(context, Constants.File.PREFIX_CROPPED_IMAGE,
+                    TimeUtils.currentTime().toString(), Constants.File.SUFFIX_IMAGE,
+                    Environment.DIRECTORY_PICTURES)
+        }
+
+        private fun getEmptyFile(context: Context, fileNamePrefix: String,
+                                 fileNameBody: String, fileNameSuffix: String,
+                                 directoryType: String): File? {
+
+            val fileName = fileNamePrefix + fileNameBody + fileNameSuffix
+            val storageDirectory = context.getExternalFilesDir(directoryType)
             val file = File(storageDirectory, fileName)
 
             try {

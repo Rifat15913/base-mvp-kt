@@ -36,6 +36,7 @@ class Constants {
         companion object {
             val DIRECTORY_ROOT = DataUtils.getString(R.string.app_name)
             val PREFIX_IMAGE = "IMG_"
+            val PREFIX_CROPPED_IMAGE = "IMG_CROPPED_"
             val SUFFIX_IMAGE = ".jpg"
         }
     }

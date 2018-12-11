@@ -1,5 +1,6 @@
 package io.diaryofrifat.code.basemvp.ui.base.component
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.view.animation.AnimationUtils
@@ -11,6 +12,8 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.ViewModelProviders
 import butterknife.ButterKnife
 import io.diaryofrifat.code.basemvp.ui.base.callback.MvpView
+import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils
+import io.diaryofrifat.code.utils.libs.ImageCropperUtils
 import timber.log.Timber
 
 abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
@@ -154,6 +157,12 @@ abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
     override fun onStop() {
         super.onStop()
         presenter.compositeDisposable.clear()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        ImagePickerUtils.onActivityResult(this, requestCode, resultCode, data)
+        ImageCropperUtils.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onDestroy() {

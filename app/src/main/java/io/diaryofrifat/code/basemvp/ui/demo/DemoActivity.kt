@@ -2,14 +2,15 @@ package io.diaryofrifat.code.basemvp.ui.demo
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.view.View
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.basemvp.databinding.ActivityDemoBinding
 import io.diaryofrifat.code.basemvp.ui.base.component.BaseActivity
 import io.diaryofrifat.code.utils.helper.PermissionUtils
-import io.diaryofrifat.code.utils.helper.imagepicker.ImageInfo
 import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils
 import io.diaryofrifat.code.utils.libs.GlideUtils
+import io.diaryofrifat.code.utils.libs.ImageCropperUtils
 import timber.log.Timber
 
 class DemoActivity : BaseActivity<DemoMvpView, DemoPresenter>() {
@@ -45,17 +46,16 @@ class DemoActivity : BaseActivity<DemoMvpView, DemoPresenter>() {
     }
 
     private fun pickImage() {
-        ImagePickerUtils.pickImage(this, object : ImagePickerUtils.Listener {
+        ImagePickerUtils.pickImageAndCrop(this, object : ImageCropperUtils.Listener {
             override fun onError(error: Throwable) {
                 Timber.e(error)
             }
 
-            override fun onSuccess(imageInfo: ImageInfo) {
-                Timber.e(imageInfo.isTakenByCamera.toString())
-                Timber.e(imageInfo.imageUri.toString())
+            override fun onSuccess(imageUri: Uri) {
+                Timber.d(imageUri.toString())
 
                 GlideUtils.default(mBinding.imageViewPickedPhoto,
-                        imageInfo.imageUri, true,
+                        imageUri, true,
                         GlideUtils.ImageCropType.SQUARE, null)
             }
         })

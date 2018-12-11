@@ -12,6 +12,9 @@
     <string name="error_image_picking_intent_is_null">Image picking intent is null</string>
     <string name="error_fragment_context_is_null">Fragment context is null</string>
     <string name="error_selected_image_uri_is_null">Selected image uri is null</string>
+    <string name="error_could_not_crop_image">Could not crop image</string>
+    <string name="error_context_is_null">Context is null</string>
+    <string name="error_image_uri_is_null">Image Uri is null</string>
 
     <!--Warning-->
     <string name="warning_permissions_are_required">Permissions are required</string>
