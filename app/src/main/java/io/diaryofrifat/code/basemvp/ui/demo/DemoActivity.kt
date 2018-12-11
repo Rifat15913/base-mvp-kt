@@ -9,6 +9,7 @@ import io.diaryofrifat.code.basemvp.ui.base.component.BaseActivity
 import io.diaryofrifat.code.utils.helper.PermissionUtils
 import io.diaryofrifat.code.utils.helper.imagepicker.ImageInfo
 import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils
+import io.diaryofrifat.code.utils.libs.GlideUtils
 import timber.log.Timber
 
 class DemoActivity : BaseActivity<DemoMvpView, DemoPresenter>() {
@@ -33,12 +34,13 @@ class DemoActivity : BaseActivity<DemoMvpView, DemoPresenter>() {
 
         when (view.id) {
             R.id.button_do -> {
-                if (PermissionUtils.requestPermission(this,
+                pickImage()
+                /*if (PermissionUtils.requestPermission(this,
                                 Manifest.permission.CAMERA,
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     pickImage()
-                }
+                }*/
             }
         }
     }
@@ -52,6 +54,10 @@ class DemoActivity : BaseActivity<DemoMvpView, DemoPresenter>() {
             override fun onSuccess(imageInfo: ImageInfo) {
                 Timber.e(imageInfo.isTakenByCamera.toString())
                 Timber.e(imageInfo.imageUri.toString())
+
+                GlideUtils.default(mBinding.imageViewPickedPhoto,
+                        imageInfo.imageUri, true,
+                        GlideUtils.ImageCropType.SQUARE, null)
             }
         })
     }

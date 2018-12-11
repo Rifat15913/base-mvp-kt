@@ -24,8 +24,7 @@ object ImageCropperUtils {
      * @param destinationUri the cropped image
      * */
     fun cropImage(activity: Activity, sourceUri: Uri, destinationUri: Uri) {
-        cropImage(activity, sourceUri, destinationUri, CropRatio.DEFAULT,
-                DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
+        cropImage(activity, sourceUri, destinationUri, CropRatio.DEFAULT, DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
     }
 
     /**
@@ -37,8 +36,7 @@ object ImageCropperUtils {
      * @param cropRatio crop ratio of the image
      * */
     fun cropImage(activity: Activity, sourceUri: Uri, destinationUri: Uri, cropRatio: CropRatio) {
-        cropImage(activity, sourceUri, destinationUri, cropRatio,
-                DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
+        cropImage(activity, sourceUri, destinationUri, cropRatio, DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
     }
 
     /**

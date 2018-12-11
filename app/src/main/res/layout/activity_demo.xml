@@ -6,15 +6,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_view_picked_photo"
+            android:layout_width="@dimen/width_200"
+            android:layout_height="@dimen/height_200"
+            app:layout_constraintBottom_toTopOf="@+id/button_do"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_do"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/do_something"
+            android:text="@string/pick_photo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/image_view_picked_photo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -13,6 +13,10 @@
     <string name="error_fragment_context_is_null">Fragment context is null</string>
     <string name="error_selected_image_uri_is_null">Selected image uri is null</string>
 
+    <!--Warning-->
+    <string name="warning_permissions_are_required">Permissions are required</string>
+
     <!--Demo page-->
     <string name="do_something">Do something</string>
+    <string name="pick_photo">Pick photo</string>
 </resources>

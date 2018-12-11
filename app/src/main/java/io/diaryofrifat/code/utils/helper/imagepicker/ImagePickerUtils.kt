@@ -1,5 +1,6 @@
 package io.diaryofrifat.code.utils.helper.imagepicker
 
+import android.Manifest
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Context
@@ -13,10 +14,11 @@ import androidx.fragment.app.Fragment
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.utils.helper.DataUtils
 import io.diaryofrifat.code.utils.helper.FileUtils
+import io.diaryofrifat.code.utils.helper.PermissionUtils
+import io.diaryofrifat.code.utils.libs.ToastUtils
 import java.io.File
 import java.util.*
 
-// TODO: Test this class
 object ImagePickerUtils {
     /**
      * Constants
@@ -38,14 +40,20 @@ object ImagePickerUtils {
      * */
     @Synchronized
     fun pickImage(activity: Activity, listener: Listener) {
-        mListener = listener
-        val imagePickingIntent = getImagePickingIntent(activity)
+        if (PermissionUtils.isAllowed(Manifest.permission.CAMERA)
+                && PermissionUtils.isAllowed(Manifest.permission.READ_EXTERNAL_STORAGE)
+                && PermissionUtils.isAllowed(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            mListener = listener
+            val imagePickingIntent = getImagePickingIntent(activity)
 
-        if (imagePickingIntent != null) {
-            activity.startActivityForResult(imagePickingIntent, REQUEST_CODE_PICK_IMAGE)
+            if (imagePickingIntent != null) {
+                activity.startActivityForResult(imagePickingIntent, REQUEST_CODE_PICK_IMAGE)
+            } else {
+                mListener?.onError(NullPointerException(
+                        activity.getString(R.string.error_image_picking_intent_is_null)))
+            }
         } else {
-            mListener?.onError(NullPointerException(
-                    activity.getString(R.string.error_image_picking_intent_is_null)))
+            ToastUtils.warning(DataUtils.getString(R.string.warning_permissions_are_required))
         }
     }
 
@@ -57,20 +65,26 @@ object ImagePickerUtils {
      * */
     @Synchronized
     fun pickImage(fragment: Fragment, listener: Listener) {
-        mListener = listener
+        if (PermissionUtils.isAllowed(Manifest.permission.CAMERA)
+                && PermissionUtils.isAllowed(Manifest.permission.READ_EXTERNAL_STORAGE)
+                && PermissionUtils.isAllowed(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            mListener = listener
 
-        if (fragment.context != null) {
-            val imagePickingIntent = getImagePickingIntent(fragment.context!!)
+            if (fragment.context != null) {
+                val imagePickingIntent = getImagePickingIntent(fragment.context!!)
 
-            if (imagePickingIntent != null) {
-                fragment.startActivityForResult(imagePickingIntent, REQUEST_CODE_PICK_IMAGE)
+                if (imagePickingIntent != null) {
+                    fragment.startActivityForResult(imagePickingIntent, REQUEST_CODE_PICK_IMAGE)
+                } else {
+                    mListener?.onError(NullPointerException(
+                            fragment.getString(R.string.error_image_picking_intent_is_null)))
+                }
             } else {
                 mListener?.onError(NullPointerException(
-                        fragment.getString(R.string.error_image_picking_intent_is_null)))
+                        fragment.getString(R.string.error_fragment_context_is_null)))
             }
         } else {
-            mListener?.onError(NullPointerException(
-                    fragment.getString(R.string.error_fragment_context_is_null)))
+            ToastUtils.warning(DataUtils.getString(R.string.warning_permissions_are_required))
         }
     }
 
@@ -104,9 +118,6 @@ object ImagePickerUtils {
     }
 
     private fun getImagePickingIntent(context: Context): Intent? {
-
-        // TODO: Find bug by entering here without taking permission from user
-
         var chooserIntent: Intent? = null
         var intentList: MutableList<Intent> = ArrayList()
 
