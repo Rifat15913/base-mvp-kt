@@ -34,13 +34,12 @@ class DemoActivity : BaseActivity<DemoMvpView, DemoPresenter>() {
 
         when (view.id) {
             R.id.button_do -> {
-                pickImage()
-                /*if (PermissionUtils.requestPermission(this,
+                if (PermissionUtils.requestPermission(this,
                                 Manifest.permission.CAMERA,
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     pickImage()
-                }*/
+                }
             }
         }
     }
