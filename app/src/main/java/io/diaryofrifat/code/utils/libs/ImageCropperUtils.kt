@@ -3,6 +3,7 @@ package io.diaryofrifat.code.utils.libs
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -11,20 +12,15 @@ import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.utils.helper.DataUtils
 import io.diaryofrifat.code.utils.helper.FileUtils
 import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils
+import java.io.File
 
-// TODO: Solve problem with cropped image quality
 object ImageCropperUtils {
-
-    /**
-     * Constants
-     */
-    private const val DEFAULT_MAX_WIDTH = 200
-    private const val DEFAULT_MAX_HEIGHT = 200
 
     /**
      * Fields
      * */
     private var mListener: Listener? = null
+    private var mCroppedImage: File? = null
 
     /**
      * This method crops image in square shape using default max width and height
@@ -38,8 +34,7 @@ object ImageCropperUtils {
 
         if (destinationUri != null) {
             mListener = listener
-            cropImage(activity, null, sourceUri, destinationUri,
-                    CropRatio.DEFAULT, DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
+            cropImage(activity, null, sourceUri, destinationUri, CropRatio.DEFAULT)
         }
     }
 
@@ -56,8 +51,7 @@ object ImageCropperUtils {
 
             if (destinationUri != null) {
                 mListener = listener
-                cropImage(null, fragment, sourceUri, destinationUri,
-                        CropRatio.DEFAULT, DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
+                cropImage(null, fragment, sourceUri, destinationUri, CropRatio.DEFAULT)
             }
         }
     }
@@ -70,8 +64,7 @@ object ImageCropperUtils {
      * @param destinationUri the cropped image
      * */
     fun cropImage(activity: Activity, sourceUri: Uri, destinationUri: Uri) {
-        cropImage(activity, null, sourceUri, destinationUri,
-                CropRatio.DEFAULT, DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
+        cropImage(activity, null, sourceUri, destinationUri, CropRatio.DEFAULT)
     }
 
     /**
@@ -83,21 +76,7 @@ object ImageCropperUtils {
      * @param cropRatio crop ratio of the image
      * */
     fun cropImage(activity: Activity, sourceUri: Uri, destinationUri: Uri, cropRatio: CropRatio) {
-        cropImage(activity, null, sourceUri, destinationUri, cropRatio,
-                DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
-    }
-
-    /**
-     * This method crops image in custom shape using default max width and height
-     *
-     * @param fragment current fragment
-     * @param sourceUri the image to be cropped
-     * @param destinationUri the cropped image
-     * @param cropRatio crop ratio of the image
-     * */
-    fun cropImage(fragment: Fragment, sourceUri: Uri, destinationUri: Uri, cropRatio: CropRatio) {
-        cropImage(null, fragment, sourceUri, destinationUri, cropRatio,
-                DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
+        cropImage(activity, null, sourceUri, destinationUri, cropRatio)
     }
 
     /**
@@ -108,23 +87,7 @@ object ImageCropperUtils {
      * @param destinationUri the cropped image
      * */
     fun cropImage(fragment: Fragment, sourceUri: Uri, destinationUri: Uri) {
-        cropImage(null, fragment, sourceUri, destinationUri, CropRatio.DEFAULT,
-                DEFAULT_MAX_WIDTH, DEFAULT_MAX_HEIGHT)
-    }
-
-    /**
-     * This method crops image with custom params
-     *
-     * @param activity current activity
-     * @param sourceUri the image to be cropped
-     * @param destinationUri the cropped image
-     * @param cropRatio crop ratio of the image
-     * @param maxWidthResult max width size for image
-     * @param maxHeightResult max height size for image
-     * */
-    private fun cropImage(activity: Activity, sourceUri: Uri, destinationUri: Uri,
-                          cropRatio: CropRatio, maxWidthResult: Int, maxHeightResult: Int) {
-        cropImage(activity, null, sourceUri, destinationUri, cropRatio, maxWidthResult, maxHeightResult)
+        cropImage(null, fragment, sourceUri, destinationUri, CropRatio.DEFAULT)
     }
 
     /**
@@ -134,21 +97,15 @@ object ImageCropperUtils {
      * @param sourceUri the image to be cropped
      * @param destinationUri the cropped image
      * @param cropRatio crop ratio of the image
-     * @param maxWidthResult max width size for image
-     * @param maxHeightResult max height size for image
      * */
-    private fun cropImage(fragment: Fragment,
-                          sourceUri: Uri, destinationUri: Uri,
-                          cropRatio: CropRatio,
-                          maxWidthResult: Int, maxHeightResult: Int) {
-        cropImage(null, fragment, sourceUri, destinationUri, cropRatio, maxWidthResult, maxHeightResult)
+    private fun cropImage(fragment: Fragment, sourceUri: Uri, destinationUri: Uri, cropRatio: CropRatio) {
+        cropImage(null, fragment, sourceUri, destinationUri, cropRatio)
     }
 
     private fun cropImage(activity: Activity?,
                           fragment: Fragment?,
                           sourceUri: Uri, destinationUri: Uri,
-                          cropRatio: CropRatio,
-                          maxWidthResult: Int, maxHeightResult: Int) {
+                          cropRatio: CropRatio) {
 
         val context: Context = when {
             activity != null -> activity
@@ -160,10 +117,11 @@ object ImageCropperUtils {
         options.setActiveWidgetColor(ContextCompat.getColor(context, R.color.colorPrimary))
         options.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary))
         options.setStatusBarColor(ContextCompat.getColor(context, R.color.colorPrimary))
+        options.setCompressionQuality(100)
+        options.setCompressionFormat(Bitmap.CompressFormat.PNG)
 
         val cropper = UCrop.of(sourceUri, destinationUri)
                 .withOptions(options)
-                .withMaxResultSize(maxWidthResult, maxHeightResult)
 
         when (cropRatio) {
             CropRatio.DEFAULT -> {
@@ -207,6 +165,7 @@ object ImageCropperUtils {
         val imageFile = FileUtils.getEmptyFileForSavingCroppedImage(context)
 
         return if (imageFile != null) {
+            mCroppedImage = imageFile
             Uri.fromFile(imageFile)
         } else {
             null
@@ -220,9 +179,14 @@ object ImageCropperUtils {
                     if (data != null) {
                         val croppedImageUri = UCrop.getOutput(data)
 
-                        if (croppedImageUri != null) mListener?.onSuccess(croppedImageUri)
-                        else mListener?.onError(NullPointerException(
-                                DataUtils.getString(R.string.error_image_uri_is_null)))
+                        if (croppedImageUri != null) {
+                            mListener?.onSuccess(croppedImageUri)
+                        } else {
+                            mListener?.onError(NullPointerException(
+                                    DataUtils.getString(R.string.error_image_uri_is_null)))
+                            mCroppedImage?.delete()
+                            clearUtil()
+                        }
 
                         ImagePickerUtils.deleteTheImageFile()
                         ImagePickerUtils.clearUtil()
@@ -234,6 +198,13 @@ object ImageCropperUtils {
                         mListener?.onError(UCrop.getError(data)!!)
                     }
 
+                    mCroppedImage?.delete()
+                    clearUtil()
+                    ImagePickerUtils.deleteTheImageFile()
+                    ImagePickerUtils.clearUtil()
+                } else {
+                    mCroppedImage?.delete()
+                    clearUtil()
                     ImagePickerUtils.deleteTheImageFile()
                     ImagePickerUtils.clearUtil()
                 }
@@ -243,6 +214,11 @@ object ImageCropperUtils {
                 return
             }
         }
+    }
+
+    private fun clearUtil() {
+        mListener = null
+        mCroppedImage = null
     }
 
     enum class CropRatio {

@@ -168,8 +168,6 @@ object ImagePickerUtils {
                 }
 
                 else -> {
-                    deleteTheImageFile()
-                    clearUtil()
                     return
                 }
             }
@@ -210,6 +208,8 @@ object ImagePickerUtils {
         try {
             val selectedImageUri =
                     if (isCamera) Uri.fromFile(mCapturedImageFile) else intentWithImage!!.data
+
+            if (!isCamera) deleteTheImageFile()
 
             if (selectedImageUri != null) {
                 if (mImageCroppingListener != null) {
