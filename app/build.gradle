@@ -151,15 +151,15 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofit_version"
 
     // App data storage
-    debugImplementation 'com.awesomedroidapps:inappstoragereader:1.0.2'
+    //debugImplementation 'com.awesomedroidapps:inappstoragereader:1.0.2'
 
     // Memory leak detector
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leak_canary_version"
-    debugImplementation "com.squareup.leakcanary:leakcanary-support-fragment:$rootProject.ext.leak_canary_version"
+    //debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leak_canary_version"
+    //debugImplementation "com.squareup.leakcanary:leakcanary-support-fragment:$rootProject.ext.leak_canary_version"
 
     // Testing
     testImplementation 'junit:junit:4.12'
 
     // JVM testing
-    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
 }

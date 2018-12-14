@@ -62,7 +62,7 @@ class MainActivity : BaseActivity<MainMvpView, MainPresenter>(), MainMvpView {
 
         NotificationUtils.buildNotification(1234,
                 NotificationUtils.NotificationType.DEFAULT,
-                R.drawable.leak_canary_icon_foreground,
+                R.drawable.ic_check_white_48dp,
                 "Hello Notification",
                 "Hello Notification Caption",
                 R.raw.notification)
