@@ -1,11 +1,15 @@
 package io.diaryofrifat.code.utils.helper
 
 import android.content.Context
+import android.net.Uri
 import android.os.Environment
+import android.provider.MediaStore
+import androidx.loader.content.CursorLoader
 import timber.log.Timber
 import java.io.File
 import java.io.IOException
 import java.util.*
+
 
 class FileUtils private constructor() {
 
@@ -679,5 +683,23 @@ class FileUtils private constructor() {
 
             return file
         }
+
+        /**
+         * This method gets path from image uri
+         *
+         * @param context UI context
+         * @param uri current image uri
+         * @return [String] image path
+         * */
+        fun getImagePathFromUri(context: Context, uri: Uri): String? {
+            val data = arrayOf(MediaStore.Images.Media.DATA)
+            val loader = CursorLoader(context, uri, data, null, null, null)
+            val cursor = loader.loadInBackground() ?: return null
+
+            val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            return cursor.getString(columnIndex)
+        }
     }
+
 }
