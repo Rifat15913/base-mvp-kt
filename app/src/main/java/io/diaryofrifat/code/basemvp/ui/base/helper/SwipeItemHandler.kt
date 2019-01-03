@@ -61,7 +61,7 @@ class SwipeItemHandler(private val mSwipeDirection: SwipeDirection,
                     TextDrawable.builder()
                             .beginConfig()
                             .fontSize(ViewUtils.getResources().getDimensionPixelSize(R.dimen.text_body))
-                            .useFont(ViewUtils.getFont(R.font.roboto_regular))
+                            .useFont(ViewUtils.getFont(R.font.regular))
                             .textColor(ViewUtils.getColor(R.color.white))
                             .bold()
                             .endConfig()

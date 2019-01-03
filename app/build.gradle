@@ -59,7 +59,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // MultiDex
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     // Lifecycle (Java 8 Support / instead of lifecycle compiler)
     implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.ext.lifecycle_version"
@@ -97,7 +97,7 @@ dependencies {
     implementation "androidx.vectordrawable:vectordrawable-animated:$rootProject.ext.androidx_version"
 
     // Constraint layout
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
 
     // Circular ImageView
     implementation 'com.mikhaellopez:circularimageview:3.2.0'

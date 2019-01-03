@@ -10,11 +10,11 @@
     </style>
 
     <style name="TextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:fontFamily">@font/regular</item>
     </style>
 
     <style name="ButtonStyle" parent="android:Widget.Holo.Button">
-        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:fontFamily">@font/regular</item>
     </style>
 
     <style name="AppTheme.GradientStatusBar" parent="AppTheme">
