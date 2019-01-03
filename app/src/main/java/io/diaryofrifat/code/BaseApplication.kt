@@ -4,17 +4,17 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import io.diaryofrifat.code.basemvp.BuildConfig
-import io.diaryofrifat.code.basemvp.data.BaseMvpRepository
+import io.diaryofrifat.code.basemvp.data.BaseRepository
 import timber.log.Timber
 
-class BaseMvpApplication : MultiDexApplication() {
+class BaseApplication : MultiDexApplication() {
 
     init {
         sInstance = this
     }
 
     companion object {
-        private lateinit var sInstance: BaseMvpApplication
+        private lateinit var sInstance: BaseApplication
 
         fun getBaseApplicationContext(): Context {
             return sInstance.applicationContext
@@ -46,7 +46,7 @@ class BaseMvpApplication : MultiDexApplication() {
     }
 
     private fun initiate(context: Context) {
-        BaseMvpRepository.init(context)
+        BaseRepository.init(context)
     }
 
     override fun attachBaseContext(base: Context?) {

@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
-import io.diaryofrifat.code.BaseMvpApplication
+import io.diaryofrifat.code.BaseApplication
 
 class AndroidUtils private constructor() {
     companion object {
@@ -47,7 +47,7 @@ class AndroidUtils private constructor() {
          * @return [PackageInfo] package info of the application
          * */
         fun getPackageInfo(): PackageInfo? {
-            val context: Context = BaseMvpApplication.getBaseApplicationContext()
+            val context: Context = BaseApplication.getBaseApplicationContext()
 
             return try {
                 context.packageManager.getPackageInfo(context.packageName, 0)

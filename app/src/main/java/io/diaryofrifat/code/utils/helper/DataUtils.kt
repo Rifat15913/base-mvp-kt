@@ -2,7 +2,7 @@ package io.diaryofrifat.code.utils.helper
 
 import android.content.ContentResolver
 import android.net.Uri
-import io.diaryofrifat.code.BaseMvpApplication
+import io.diaryofrifat.code.BaseApplication
 import java.util.*
 
 class DataUtils private constructor() {
@@ -34,7 +34,7 @@ class DataUtils private constructor() {
          * @return desired string
          * */
         fun getString(resourceId: Int): String {
-            return BaseMvpApplication.getBaseApplicationContext().getString(resourceId)
+            return BaseApplication.getBaseApplicationContext().getString(resourceId)
         }
 
         /**

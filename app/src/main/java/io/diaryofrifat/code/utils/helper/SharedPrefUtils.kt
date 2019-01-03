@@ -2,11 +2,11 @@ package io.diaryofrifat.code.utils.helper
 
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import io.diaryofrifat.code.BaseMvpApplication
+import io.diaryofrifat.code.BaseApplication
 
 object SharedPrefUtils {
     val preferences: SharedPreferences = PreferenceManager
-            .getDefaultSharedPreferences(BaseMvpApplication.getBaseApplicationContext())
+            .getDefaultSharedPreferences(BaseApplication.getBaseApplicationContext())
 
     private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {
         val editor = this.edit()

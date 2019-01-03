@@ -8,7 +8,7 @@ import io.diaryofrifat.code.basemvp.data.remote.retrophoto.RetroPhoto
 import io.reactivex.Completable
 import io.reactivex.Flowable
 
-class BaseMvpRepository(context: Context) {
+class BaseRepository(context: Context) {
     /**
      * Fields
      * */
@@ -16,16 +16,16 @@ class BaseMvpRepository(context: Context) {
     private val mAppRemoteDataSource = AppRemoteDataSource(context)
 
     companion object {
-        private lateinit var sInstance: BaseMvpRepository
+        private lateinit var sInstance: BaseRepository
 
-        fun on(): BaseMvpRepository {
+        fun on(): BaseRepository {
             return sInstance
         }
 
         @Synchronized
         fun init(context: Context) {
-            synchronized(BaseMvpRepository::class.java) {
-                sInstance = BaseMvpRepository(context)
+            synchronized(BaseRepository::class.java) {
+                sInstance = BaseRepository(context)
             }
         }
     }

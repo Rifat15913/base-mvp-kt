@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.fragment.app.Fragment
-import io.diaryofrifat.code.BaseMvpApplication
+import io.diaryofrifat.code.BaseApplication
 import java.util.*
 
 object PermissionUtils {
@@ -110,7 +110,7 @@ object PermissionUtils {
             return true
         }
 
-        return BaseMvpApplication.getBaseApplicationContext()
+        return BaseApplication.getBaseApplicationContext()
                 .checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
     }
 }

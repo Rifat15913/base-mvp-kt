@@ -17,7 +17,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import io.diaryofrifat.code.BaseMvpApplication
+import io.diaryofrifat.code.BaseApplication
 import io.diaryofrifat.code.basemvp.R
 import io.diaryofrifat.code.basemvp.ui.base.callback.ItemClickListener
 import io.diaryofrifat.code.basemvp.ui.base.callback.ItemLongClickListener
@@ -34,7 +34,7 @@ class ViewUtils {
          * @return desired resources
          * */
         fun getResources(): Resources {
-            return BaseMvpApplication.getBaseApplicationContext().resources
+            return BaseApplication.getBaseApplicationContext().resources
         }
 
         /**
@@ -62,7 +62,7 @@ class ViewUtils {
          * @return desired font
          * */
         fun getFont(resourceId: Int): Typeface? {
-            return ResourcesCompat.getFont(BaseMvpApplication.getBaseApplicationContext(),
+            return ResourcesCompat.getFont(BaseApplication.getBaseApplicationContext(),
                     resourceId)
         }
 
@@ -74,7 +74,7 @@ class ViewUtils {
          * */
         fun getDrawable(resourceId: Int): Drawable? {
             return ContextCompat.getDrawable(
-                    BaseMvpApplication.getBaseApplicationContext(),
+                    BaseApplication.getBaseApplicationContext(),
                     resourceId)
         }
 
@@ -86,7 +86,7 @@ class ViewUtils {
          * */
         fun getColor(colorResourceId: Int): Int {
             return ContextCompat.getColor(
-                    BaseMvpApplication.getBaseApplicationContext(),
+                    BaseApplication.getBaseApplicationContext(),
                     colorResourceId)
         }
 
@@ -138,7 +138,7 @@ class ViewUtils {
 
                 if (bitmap == null) {
                     Observable.error(
-                            Throwable(BaseMvpApplication.getBaseApplicationContext()
+                            Throwable(BaseApplication.getBaseApplicationContext()
                                     .getString(R.string.error_could_not_create_bitmap))
                     )
                 } else {

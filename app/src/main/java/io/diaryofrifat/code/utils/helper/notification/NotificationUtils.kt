@@ -8,7 +8,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import io.diaryofrifat.code.BaseMvpApplication
+import io.diaryofrifat.code.BaseApplication
 import io.diaryofrifat.code.utils.helper.DataUtils
 import java.util.*
 
@@ -81,7 +81,7 @@ object NotificationUtils {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationManager: NotificationManager =
-                    BaseMvpApplication.getBaseApplicationContext()
+                    BaseApplication.getBaseApplicationContext()
                             .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
             var shouldCreateChannel = true
@@ -99,7 +99,7 @@ object NotificationUtils {
         }
 
         val builder =
-                NotificationCompat.Builder(BaseMvpApplication.getBaseApplicationContext(), channelDetails.id)
+                NotificationCompat.Builder(BaseApplication.getBaseApplicationContext(), channelDetails.id)
                         .setSmallIcon(iconResourceId)
                         .setContentTitle(title)
                         .setContentText(subtitle)
@@ -110,7 +110,7 @@ object NotificationUtils {
         }
 
         val manager: NotificationManagerCompat = NotificationManagerCompat.from(
-                BaseMvpApplication.getBaseApplicationContext())
+                BaseApplication.getBaseApplicationContext())
         manager.notify(notificationId, builder.build())
     }
 }
