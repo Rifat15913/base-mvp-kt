@@ -40,7 +40,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
         private set
     protected var menu: Menu? = null
         private set
-    protected var currentFragment: BaseFragment<V, P>? = null
+    protected var currentFragment: BaseFragment<*, *>? = null
         private set
     protected lateinit var presenter: P
 
@@ -262,7 +262,7 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * @param viewId       int value
      * @param baseFragment fragment object
      * */
-    protected fun commitFragment(viewId: Int, baseFragment: BaseFragment<V, P>) {
+    protected fun commitFragment(viewId: Int, baseFragment: BaseFragment<*, *>) {
         supportFragmentManager
                 .beginTransaction()
                 .replace(viewId, baseFragment, baseFragment.javaClass.name)

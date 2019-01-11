@@ -57,8 +57,8 @@ abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
     }
 
     @Suppress("UNCHECKED_CAST")
-    private val baseActivity: BaseActivity<V, P>?
-        get() = activity as BaseActivity<V, P>?
+    private val baseActivity: BaseActivity<*, *>?
+        get() = activity as BaseActivity<*, *>?
 
     private val isBaseActivityInstance: Boolean
         get() = BaseActivity::class.java.isInstance(activity)
