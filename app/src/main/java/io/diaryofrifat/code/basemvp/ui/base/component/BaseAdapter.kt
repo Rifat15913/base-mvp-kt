@@ -185,8 +185,10 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
      * @param newItem new model object
      * @return [Int] updated model object position
      */
-    fun updateItem(oldItem: T, newItem: T): Int {
+    fun updateItem(newItem: T, oldItem: T): Int {
         val oldItemIndex = getItemPosition(oldItem)
+
+        if (oldItemIndex < 0 || oldItemIndex >= mItemList.size) return -1
         mItemList[oldItemIndex] = newItem
         notifyItemChanged(oldItemIndex)
         mRxAdapterSize.onNext(itemCount)
