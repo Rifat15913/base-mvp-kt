@@ -5,6 +5,8 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.WindowInsets
+import io.diaryofrifat.code.utils.helper.ViewUtils
+import kotlin.math.roundToInt
 
 class BaseStatusBar : View {
 
@@ -26,7 +28,7 @@ class BaseStatusBar : View {
 
     override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mStatusBarHeight = insets.systemWindowInsetTop
+            mStatusBarHeight = ViewUtils.dpToPx(24).roundToInt()
             return insets.consumeSystemWindowInsets()
         }
         return insets
