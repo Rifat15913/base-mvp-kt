@@ -138,10 +138,13 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
      * This method initializes the toolbar
      * */
     private fun initializeToolbar() {
-        if (getToolbarId() != INVALID_ID && shouldShowBackIconAtToolbar()) {
+        if (getToolbarId() != INVALID_ID) {
             setSupportActionBar(findViewById(getToolbarId()!!))
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.setDisplayShowHomeEnabled(true)
+
+            if (shouldShowBackIconAtToolbar()) {
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.setDisplayShowHomeEnabled(true)
+            }
         }
     }
 
