@@ -1,6 +1,6 @@
 package io.diaryofrifat.code.utils.helper
 
-import io.diaryofrifat.code.basemvp.R
+import io.diaryofrifat.code.basemvpkt.R
 
 class Constants {
     class Default {

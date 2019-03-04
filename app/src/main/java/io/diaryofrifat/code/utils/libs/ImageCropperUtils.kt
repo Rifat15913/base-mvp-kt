@@ -8,7 +8,7 @@ import android.net.Uri
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.yalantis.ucrop.UCrop
-import io.diaryofrifat.code.basemvp.R
+import io.diaryofrifat.code.basemvpkt.R
 import io.diaryofrifat.code.utils.helper.DataUtils
 import io.diaryofrifat.code.utils.helper.FileUtils
 import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils

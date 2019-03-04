@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <io.diaryofrifat.code.basemvp.ui.base.widget.BaseStatusBar
+        <io.diaryofrifat.code.basemvpkt.ui.base.widget.BaseStatusBar
             android:id="@+id/status_bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

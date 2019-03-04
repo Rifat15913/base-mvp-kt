@@ -11,7 +11,7 @@ import android.os.Parcelable
 import android.provider.MediaStore
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
-import io.diaryofrifat.code.basemvp.R
+import io.diaryofrifat.code.basemvpkt.R
 import io.diaryofrifat.code.utils.helper.DataUtils
 import io.diaryofrifat.code.utils.helper.FileUtils
 import io.diaryofrifat.code.utils.helper.PermissionUtils
