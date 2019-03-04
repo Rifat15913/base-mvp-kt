@@ -10,7 +10,7 @@ android {
     buildToolsVersion rootProject.ext.build_tools_version
     
     defaultConfig {
-        applicationId "io.diaryofrifat.code.basemvp"
+        applicationId "io.diaryofrifat.code.basemvpkt"
         minSdkVersion rootProject.ext.minimum_sdk_version
         targetSdkVersion rootProject.ext.target_sdk_version
 
@@ -50,10 +50,6 @@ dependencies {
 
     // Core library
     implementation "androidx.core:core:1.0.1"
-
-    // ButterKnife library for binding views
-    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknife_version"
-    kapt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife_version"
 
     // Add .jar libraries from external folder
     implementation fileTree(include: ['*.jar'], dir: 'libs')

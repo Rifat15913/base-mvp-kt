@@ -11,7 +11,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.ViewModelProviders
-import butterknife.ButterKnife
 import io.diaryofrifat.code.basemvpkt.ui.base.callback.MvpView
 import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils
 import io.diaryofrifat.code.utils.libs.ImageCropperUtils
@@ -119,7 +118,6 @@ abstract class BaseFragment<V : MvpView, P : BasePresenter<V>> : Fragment(),
 
         if (viewDataBinding == null) {
             view = inflater.inflate(layoutId, container, false)
-            ButterKnife.bind(activity!!)
         }
 
         return view

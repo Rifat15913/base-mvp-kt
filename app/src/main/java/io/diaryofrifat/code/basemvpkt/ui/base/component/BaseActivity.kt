@@ -13,7 +13,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.ViewModelProviders
-import butterknife.ButterKnife
 import io.diaryofrifat.code.basemvpkt.ui.base.callback.MvpView
 import io.diaryofrifat.code.utils.helper.ViewUtils
 import io.diaryofrifat.code.utils.helper.imagepicker.ImagePickerUtils
@@ -130,7 +129,6 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
 
         if (viewDataBinding == null) {
             setContentView(layoutResourceId)
-            ButterKnife.bind(this)
         }
     }
 
