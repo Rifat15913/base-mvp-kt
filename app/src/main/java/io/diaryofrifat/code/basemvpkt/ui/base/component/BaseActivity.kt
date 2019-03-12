@@ -84,10 +84,11 @@ abstract class BaseActivity<V : MvpView, P : BasePresenter<V>>
 
         if (layoutResourceId > INVALID_ID) {
             initializeLayout()
-            initializePresenter()
-            initializeToolbar()
-            initializeStatusBar()
         }
+
+        initializePresenter()
+        initializeToolbar()
+        initializeStatusBar()
 
         this.startUI()
     }
